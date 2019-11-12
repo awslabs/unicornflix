@@ -146,7 +146,23 @@ npm i aws-amplify-react
     ```
 
 1. TODO - upload asset, provide metadata
+    1. Navigate back to the application running on your Localhost.
+    1. Log in to the admin user you created. Note: if you were previously logged in before creating your admin user, log out and log back in to refresh your tokens giving you access to post content.
+    1. Navigate to the Admin Panel.
+    1. Fill out the form and select a video with the file picker. 
+    1. Once all the fields have been selected, choose the "submit" button to begin the upload process.
 1. TODO - confirm upload by looking at appsync/dynamo in console? Expand on how appsync + mutations worked
+    1. Once again, open the aws management console and navigate to the dynamodb service using the search bar.
+    1. In the left hand side bar, choose "Tables"
+    1. You should see 2 Dynamo Tables that were deployed on your behalf: Vodasset- and VideoObject-.
+    1. Select the VodAsset- table and choose "Items" to view the asset you just pushed to the cloud using the Application. Here you can see that the API gave each asset a GUID as well as createdAt/updatedAt feilds.
+
+1. TODO - confirm MediaConvert Job was kicked off on upload of an object
+    1. In the management console, select the services drop down from the top left corner of the browser screen.
+    1. In the search bar type MediaConvert and navigate to the Elemental MediaConvert service page.
+    1. Expand the left hand side menu and choose "Jobs"
+    1. You should see a transcode job that was kicked off when you uploaded an asset through the console. You can view the input file name to be sure that the upload from the application was successful.
+    1. (Optional) Select the job and select the "View JSON" button in the top right of the screen. Here you can view the job file which was submitted to the Elemental MediaConvert Service. Here, you can view the input and output locations as well as presets used during the transcode process.
 
 Now that we have a functioning backend with an admin portal, let's setup the end-user view.
 
