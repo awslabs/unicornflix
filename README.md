@@ -178,7 +178,7 @@ Now that we have a functioning backend with an admin portal, let's setup the end
     1. Search for the listenForNewAssets function and paste the following code into the function body.
 
     ```
-        API.graphql(
+    API.graphql(
       graphqlOperation(onCreateVodAsset)
     ).subscribe({
       next: (((data) => {
@@ -192,6 +192,7 @@ Now that we have a functioning backend with an admin portal, let's setup the end
       }).bind(this))
     })
 ```
+
 1. TODO - playback video
 1. TODO - upload another asset to see the entire workflow function from end-to-end
 
