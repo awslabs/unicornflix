@@ -95,9 +95,13 @@ npm i aws-amplify-react
 
 1. TODO - Have participants add auth to admin
 1. Navigate to unicornflix/src/components/index.js
-  1. At the bottom of the import block, add:
+    1. At the bottom of the import block, add:
+
     ```import { withAuthenticator } from 'aws-amplify-react';
     ```
+    1. Change line 23 ```export defaul App;``` to:
+
+    ```export default withAuthenticator(App, true);```
 1. TODO - create admin through cognito console
 1. TODO - implement uploads in admin page
 1. TODO - upload asset, provide metadata
