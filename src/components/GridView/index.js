@@ -34,13 +34,8 @@ class GridView extends Component {
     event.preventDefault();
   }
   async componentDidMount(){
-    const allTodos = await API.graphql(graphqlOperation(queries.listVodAssets));
-    var nextToken = allTodos.data.listVodAssets.nextToken;
-    if(nextToken == undefined){
-      nextToken = "";
-    }
-    this.setState({items: allTodos.data.listVodAssets.items, nextToken: nextToken})
-    this.listenForNewAssets();
+    //Location 1
+
   }
 
 
@@ -48,14 +43,7 @@ class GridView extends Component {
     console.log('I am at bottom! ' + Math.round(performance.now()))
     console.log(this.state.nextToken);
     if(this.state.nextToken !== "" && this.state.nextToken !== undefined){
-      const allTodos = await API.graphql(graphqlOperation(queries.listVodAssets,{nextToken:this.state.nextToken}));
-      var items = this.state.items.concat(allTodos.data.listVodAssets.items);
-      console.log(this.state.token);
-      var nextToken = allTodos.data.listVodAssets.nextToken;
-      if(nextToken == undefined){
-        nextToken = "";
-      }
-      this.setState({items: items, nextToken: nextToken});
+      //Location 2
 
     }
   }

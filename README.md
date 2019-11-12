@@ -184,9 +184,30 @@ Now that we have a functioning backend with an admin portal, let's setup the end
     1. Refresh the tab that the application is running in to see the login page. (react's local dev server may do this for you)
     1. Create a new user. This user will not be an admin and thus won't have rights to publish content to UnicornFlix.
 1. TODO - implement Pagination using graphql queries
-
-1. TODO - implement GraphQL subscription
     1. Navigate to unicornflix/src/Components/GridView/index.js
+    1. Find Location 1: inside of the componentDidMount function and paste the following code:
+    ```
+    const allTodos = await API.graphql(graphqlOperation(queries.listVodAssets));
+    var nextToken = allTodos.data.listVodAssets.nextToken;
+    if(nextToken == undefined){
+      nextToken = "";
+    }
+    this.setState({items: allTodos.data.listVodAssets.items, nextToken: nextToken})
+    this.listenForNewAssets();
+    ```
+    1. Find Location 2: inside of the listenForNewAssets function and paste the following code:
+    ```
+      const allTodos = await API.graphql(graphqlOperation(queries.listVodAssets,{nextToken:this.state.nextToken}));
+      var items = this.state.items.concat(allTodos.data.listVodAssets.items);
+      console.log(this.state.token);
+      var nextToken = allTodos.data.listVodAssets.nextToken;
+      if(nextToken == undefined){
+        nextToken = "";
+      }
+      this.setState({items: items, nextToken: nextToken});
+    ```
+1. TODO - implement GraphQL subscription
+    1. Navigate back to unicornflix/src/Components/GridView/index.js
     1. Add the following line of code to the bottom of the import block: ```import { onCreateVodAsset } from '../../graphql/subscriptions';```
     1. Search for the listenForNewAssets function and paste the following code into the function body.
 
