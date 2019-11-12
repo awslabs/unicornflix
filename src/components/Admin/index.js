@@ -51,30 +51,30 @@ class Admin extends React.Component {
     }
     submitFormHandler(event){
       console.log(this.state.file);
-        const object = {
-            input: {
+      const object = {
+          input: {
 
-                title: this.state.titleVal,
-                description:this.state.descVal,
-                length:this.state.lenVal
-            }
-        }
-        
-       API.graphql(graphqlOperation(createVodAsset, object)).then((response,error) => {
-              console.log(response.data.createVodAsset);
-        });
+              title: this.state.titleVal,
+              description:this.state.descVal,
+              length:this.state.lenVal
+          }
+      }
+      
+     API.graphql(graphqlOperation(createVodAsset, object)).then((response,error) => {
+            console.log(response.data.createVodAsset);
+      });
 
-      Storage.put(this.state.fileName, this.state.file, {
-          contentType: 'video/*'
-        })
-        .then (result => console.log(result))
-        .catch(err => console.log(err));
-         event.preventDefault();
+    Storage.put(this.state.fileName, this.state.file, {
+        contentType: 'video/*'
+      })
+      .then (result => console.log(result))
+      .catch(err => console.log(err));
+       event.preventDefault();
 
     }
     render() {
         return (      
-        <div>
+        <div class="App-header">
         	<h1>Admin Panel</h1>
 	        <form onSubmit={this.submitFormHandler}>
 	          <div>

@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import VideoPlayer from 'react-video-js-player';
 import { API, graphqlOperation } from 'aws-amplify';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid';
 import {Modal, ModalBody, ModalHeader} from 'reactstrap';
 import { onCreateVodAsset } from '../../graphql/subscriptions';
 import './index.css';
+import VideoPlayer from './../VideoPlayer'
 import GridCardView from './../GridCardView'
 import * as queries from '../../graphql/queries';
 import BottomScrollListener from 'react-bottom-scroll-listener'
+import 'video.js/dist/video-js.css'
 
 class GridView extends Component {
   constructor(props){
@@ -18,6 +19,7 @@ class GridView extends Component {
       choosenItem:{},
       value:"",
       nextToken:"",
+      sources:[],
       items:[]
     
     }
@@ -41,6 +43,7 @@ class GridView extends Component {
     this.setState({items: allTodos.data.listVodAssets.items, nextToken: nextToken})
     this.listenForNewAssets();
   }
+
 
   async handleOnDocumentBottom(){
     console.log('I am at bottom! ' + Math.round(performance.now()))
@@ -67,11 +70,12 @@ class GridView extends Component {
   playURL = (link) => {
     console.log("clicked");
     this.setState({
-      url:link
+      sources:[ {
+        src:link,
+        type:'application/x-mpegURL'
+      }]
     }, () => {
       if (!!this.player) {
-        this.player.src(this.state.url)
-        console.log("hello")
       }
     });
 
@@ -88,6 +92,11 @@ class GridView extends Component {
   onPlayerReady(player){
     console.log("Player is ready: ", player);
     this.player = player;
+
+
+    console.log(Object.getOwnPropertyNames(player).filter(function (p) {
+    return typeof Math[p] === 'function';
+}));
   }
 
   overlayMovie = () => {
@@ -97,13 +106,10 @@ class GridView extends Component {
       <ModalBody>
         {this.state.choosenItem.details}
             <div>
-                <VideoPlayer
-                    controls={true}
-                    src={this.state.choosenItem.url}
-                    width="720"
-                    height="420"
-                    onReady={this.onPlayerReady.bind(this)}
+                <VideoPlayer controls={true} sources={this.state.sources} width={720} height={420} bigPlayButton={false} autoplay={true}
+             
                 />
+                
             </div>
             <div>
               Input Url Here: <input type="text" value={this.state.value} name="contentURL" onChange={this.handleChange}></input>
