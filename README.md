@@ -112,13 +112,39 @@ npm i aws-amplify-react
 1. TODO - create admin through cognito console
     1. Open the AWS Management Console and Search for Cognito.
     1. Select the blue "Manage User Pools" button
-    1. Select the userpool labeled Unicornflix
-    1. Under General Settings, choose Users and Groups.
-    1. Select the blue create user button and enter the user creation wizard.
-    1. Fill out the form to create a user. Now we will have to add admin privilages in order to enable this user to publish videos.
+    1. Select the userpool labeled "Unicornflix"
+    1. Under General Settings, choose "Users and Groups".
+    1. Select the blue "create user" button and enter the user creation form.
+    1. Fill out the form to create a user. Now we will have to add admin privilages in order to enable this user to publish videos through the app.
     1. Select the user you just created
     1. Select the blue "Add to Group" button, and select the admin group.
 1. TODO - implement uploads in admin page
+    1. Navigate back to unicornflix/src/Components/Admin/index.js
+    1. Find the submitFormHandler(event) function and add the following code to the function body.
+    ```
+    const object = {
+          input: {
+
+              title: this.state.titleVal,
+              description:this.state.descVal,
+              length:this.state.lenVal
+          }
+      }
+      
+     API.graphql(graphqlOperation(createVodAsset, object)).then((response,error) => {
+            console.log(response.data.createVodAsset);
+      });
+    ```
+    1. Next, staying in the submitFormHandler(event) function, add the following code underneath the API.graphql call.
+    ```
+        Storage.put(this.state.fileName, this.state.file, {
+        contentType: 'video/*'
+      })
+      .then (result => console.log(result))
+      .catch(err => console.log(err));
+       event.preventDefault();
+    ```
+
 1. TODO - upload asset, provide metadata
 1. TODO - confirm upload by looking at appsync/dynamo in console? Expand on how appsync + mutations worked
 
