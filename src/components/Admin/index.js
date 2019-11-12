@@ -2,7 +2,6 @@ import React from 'react';
 import './index.css';
 import { API, graphqlOperation, Storage } from 'aws-amplify';
 import { createVodAsset } from '../../graphql/mutations';
-import { withAuthenticator } from 'aws-amplify-react';
 import FilePicker from './../FilePicker'
 
 class Admin extends React.Component {
@@ -15,15 +14,7 @@ class Admin extends React.Component {
     }
 
     componentDidMount(){
-      Storage.configure({
-        AWSS3: {
-            bucket: 'unicornflixwstest-dev-input',
-            region: 'us-west-2'
-        }
-      });
-      Storage.put('test2.txt', 'Hello')
-      .then (result => console.log(result))
-      .catch(err => console.log(err));
+
     }
 
     handleChange(event) {
@@ -50,26 +41,6 @@ class Admin extends React.Component {
         this.setState({lenVal: event.target.value});
     }
     submitFormHandler(event){
-      console.log(this.state.file);
-      const object = {
-          input: {
-
-              title: this.state.titleVal,
-              description:this.state.descVal,
-              length:this.state.lenVal
-          }
-      }
-      
-     API.graphql(graphqlOperation(createVodAsset, object)).then((response,error) => {
-            console.log(response.data.createVodAsset);
-      });
-
-    Storage.put(this.state.fileName, this.state.file, {
-        contentType: 'video/*'
-      })
-      .then (result => console.log(result))
-      .catch(err => console.log(err));
-       event.preventDefault();
 
     }
     render() {
@@ -90,5 +61,5 @@ class Admin extends React.Component {
     }
 }
 
-export default withAuthenticator(Admin, true);
+export default Admin;
 

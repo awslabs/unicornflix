@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import {Grid, Col, Row} from 'react-styled-flexboxgrid';
 import {Modal, ModalBody, ModalHeader} from 'reactstrap';
-import { onCreateVodAsset } from '../../graphql/subscriptions';
 import './index.css';
 import VideoPlayer from './../VideoPlayer'
 import GridCardView from './../GridCardView'
@@ -121,19 +120,7 @@ class GridView extends Component {
   }
 
   listenForNewAssets = () => {
-    API.graphql(
-      graphqlOperation(onCreateVodAsset)
-    ).subscribe({
-      next: (((data) => {
-        console.log(data.value.data.onCreateVodAsset);
-        console.log("RIP");
-        var newItemList = this.state.items.push(data.value.data.onCreateVodAsset);
-        console.log(newItemList);
-        this.setState({
-            //items:newItemList
-        });
-      }).bind(this))
-    })
+
   }
 
 

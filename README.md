@@ -98,7 +98,7 @@ npm i aws-amplify-react
     1. At the bottom of the import block, add:
 
     ```import { withAuthenticator } from 'aws-amplify-react'; ```
-    1. Change line 93 ```export default Admin;``` to:
+    1. Change line 64 ```export default Admin;``` to:
 
     ```export default withAuthenticator(Admin, true);```
 1. TODO - create admin through cognito console
@@ -112,6 +112,17 @@ npm i aws-amplify-react
     1. Select the blue "Add to Group" button, and select the admin group.
 1. TODO - implement uploads in admin page
     1. Navigate back to unicornflix/src/Components/Admin/index.js
+    1. In the componentDidMount function paste the following code into the function body: (Note: you will have to input the name of your unicornflix s3 bucket into the object below)
+    ```
+    Storage.configure({
+        AWSS3: {
+            bucket: '',
+            region: 'us-west-2'
+        }
+      });
+      .then (result => console.log(result))
+      .catch(err => console.log(err));
+    ```
     1. Find the submitFormHandler(event) function and add the following code to the function body.
     ```
     const object = {
@@ -172,6 +183,8 @@ Now that we have a functioning backend with an admin portal, let's setup the end
 1. TODO - create user through signup page 
     1. Refresh the tab that the application is running in to see the login page. (react's local dev server may do this for you)
     1. Create a new user. This user will not be an admin and thus won't have rights to publish content to UnicornFlix.
+1. TODO - implement Pagination using graphql queries
+
 1. TODO - implement GraphQL subscription
     1. Navigate to unicornflix/src/Components/GridView/index.js
     1. Add the following line of code to the bottom of the import block: ```import { onCreateVodAsset } from '../../graphql/subscriptions';```
