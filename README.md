@@ -94,14 +94,6 @@ npm i aws-amplify-react
 ```
 
 1. TODO - Have participants add auth to admin
-1. Navigate to unicornflix/src/components/App/index.js
-    1. At the bottom of the import block, add:
-
-    ```import { withAuthenticator } from 'aws-amplify-react'; ```
-    1. Change line 23 ```export default App;``` to:
-
-    ```export default withAuthenticator(App, true);```
-
 1. Navigate to unicornflix/src/components/Admin/index.js
     1. At the bottom of the import block, add:
 
@@ -170,8 +162,36 @@ Now that we have a functioning backend with an admin portal, let's setup the end
 ## Web Client User View (Subscriptions & Playback)
 
 1. TODO - add auth to user view
+    1. Navigate to unicornflix/src/components/App/index.js
+        1. At the bottom of the import block, add:
+
+        ```import { withAuthenticator } from 'aws-amplify-react'; ```
+        1. Change line 23 ```export default App;``` to:
+
+        ```export default withAuthenticator(App, true);```
 1. TODO - create user through signup page 
-1. TODO - implement subscription & storage API call
+    1. Refresh the tab that the application is running in to see the login page. (react's local dev server may do this for you)
+    1. Create a new user. This user will not be an admin and thus won't have rights to publish content to UnicornFlix.
+1. TODO - implement GraphQL subscription
+    1. Navigate to unicornflix/src/Components/GridView/index.js
+    1. Add the following line of code to the bottom of the import block: ```import { onCreateVodAsset } from '../../graphql/subscriptions';```
+    1. Search for the listenForNewAssets function and paste the following code into the function body.
+
+    ```
+        API.graphql(
+      graphqlOperation(onCreateVodAsset)
+    ).subscribe({
+      next: (((data) => {
+        console.log(data.value.data.onCreateVodAsset);
+        console.log("RIP");
+        var newItemList = this.state.items.push(data.value.data.onCreateVodAsset);
+        console.log(newItemList);
+        this.setState({
+            //items:newItemList
+        });
+      }).bind(this))
+    })
+```
 1. TODO - playback video
 1. TODO - upload another asset to see the entire workflow function from end-to-end
 
