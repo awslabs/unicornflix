@@ -66,54 +66,54 @@ You just started at UnicornFlix and they hooked you up with a brand new laptop -
 
     ![architecture](images/amplify_arch.png)
 
-1. With the infrastructure deployed, let's test processing and hosting an asset. Open the S3 console and upload a small video file to the oS3InputBucket output from the cloudformation template.
-1. Check the mediaconvert console, you should see an asset in 'progressing' shortly after the upload completes. Once this successfully completes, move on to the next step.
-1. In the oS3OutputBucket, you should seee a .m3u8 manifest object. Select all objects and select 'make public' (do not do this with a bucket or content that is private. this is only for our alpha lab)
+In addition to these services, Amplify Video also manages a Amazon Cognito user pool to handle authentication. We'll use this later to handle log-in and grant administration privileges for specific users.
+
+With the infrastructure deployed, let's test processing and streaming a video asset. 
+
+1. Open the S3 console and upload a small video file to the oS3InputBucket output from the cloudformation template. (TODO - PROVIDE A SMALL FILE)
+1. Check the mediaconvert console, you should see an asset in 'progressing' shortly after the upload to S3 completes. Once the MediaConvert job is finished, continue on to the next step.
+1. In the oS3OutputBucket, you should see a .m3u8 manifest object. Select all objects and select 'make public.' DO NOT do this with a bucket or content that is private this is only for workshop demonstration and testing purposes.
 1. Finally, access the .m3u8 object url from the properties page of S3 and open it in safari, iOS, or by using a test player like the [JW Player Stream Tester](https://developer.jwplayer.com/tools/stream-tester/)
 
-Congratulations! You have now hosting a Video-on-Demand platform on AWS! Now let's setup a website that we will use to serve the content to authenticated users.
+Congratulations! You are hosting a Video-on-Demand platform on AWS! Now let's setup a website that we will use to upload more content and deliver it to viewers.
 
-## Web Client Admin View
+## Web Client Admin View (Auth & Uploads)
 
-We've pre-created a simple javascript/react web application that will serve as the basis for our workshop.
+We've pre-created a web application that will serve as the basis for our workshop. The application is split into two views. The Admin view allows basic upload and metadata association with our assets and the User view is where subscribers will access the content once they've logged into the site.
 
 1. To install the dependencies necessary to run the website locally run `npm install` from the UnicornFlix directory
-1. Next, to run the website with a local development environment run `npm start`
+1. Next, to run the website with a local development environment run `npm start` and navigate to the page running on localhost.
 
 (image of website)
 
-1. THIS IS WHERE INFO ON SUBSCRIBING TO CMS WILL GO
-
-## Web Client User View
-When you are done checking out the application lets first add some auth to our application.
-
-1. We will need to add two more npm packages to the client that are part of the amplify ecosystem:
+1. We will need to add two more npm packages to the client that are part of the Amplify ecosystem. aws-amplify is a javascript library that provides a declarative interface across amplify catagories, like auth, in order to make them easier to add them into your application. aws-amplify-react applies similar interfaces for the React framework.
 
 ```
 npm i aws-amplify
 npm i aws-amplify-react
 ```
 
-2. Navigate to `./src/components/App/index.js` and add this statement to the top of the file to include them in the web application. These are the client-side amplify react modules necessary to plug our application in with the back-end infrastructure we created in the first section.
+1. TODO - Have participants add auth to admin
+1. TODO - create admin through cognito console
+1. TODO - implement uploads in admin page
+1. TODO - upload asset, provide metadata
+1. TODO - confirm upload by looking at appsync/dynamo in console? Expand on how appsync + mutations worked
 
-```
-import Amplify from 'aws-amplify';
-import awsconfig from ‘./../../aws-exports';
-import { withAuthenticator } from 'aws-amplify-react'; // or 'aws-amplify-react-native';
+Now that we have a functioning backend with an admin portal, let's setup the end-user view.
 
-Amplify.configure(awsconfig);
-```
 
-3. Then navigate to the bottom of the file and wrap the default App component with our auth to looks something like this:
-```
-export default withAuthenticator(App, true);
-```
+## Web Client User View (Subscriptions & Playback)
 
-4. Restart your local webserver with `npm start` if it's not already running, then navigate to the localhost address of your website. You should now see a login page.
+1. TODO - add auth to user view
+1. TODO - create user through signup page 
+1. TODO - implement subscription & storage API call
+1. TODO - playback video
+1. TODO - upload another asset to see the entire workflow function from end-to-end
 
-![status](images/signup.png)
 
-5. Signup for a new user account using any information you'd like, but note that a valid email is required to send an authentication code for sign-in.
+## Extend the Application
 
-6. THIS IS WHERE WE'LL SHOW THEM HOW TO GRANT/REVOKE ACCESS TO CONTENT 
+1. TODO - Custom Metadata field (keywords, cast, etc)
+1. TODO - Host your app with amplify console
+
 
