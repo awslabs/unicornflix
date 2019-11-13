@@ -87,8 +87,10 @@ You just started at UnicornFlix and they hooked you up with a brand new laptop -
 <pre>
 unicornflix $ <b>amplify add video</b>
 ? Please select from one of the below mentioned services: <b>Video On Demand (alpha)</b>
-? Provide a friendly name for your resource to be used as a label for this category in the project: <b>unicornflix</b>
-? Select a system-provided encoding template, specify an already-created template name:  <b>Placeholder Template</b>
+? Provide a friendly name for your resource to be used as a label for this category 
+  in the project: <b>unicornflix</b>
+? Select a system-provided encoding template, specify an already-created 
+  template name:  <b>Placeholder Template</b>
 ? Do you want Amplify to use your existing GraphQL API to manage your videos? <b>Yes</b>
 Video On Demand only supports GraphQL right now.
 If you want to only use API for CMS then choose the default ToDo and don't edit it until later.
