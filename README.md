@@ -111,11 +111,24 @@ Please edit the file in your editor: <b>unicornflix/amplify/backend/api/unicornf
 
 GraphQL schema compiled successfully.
 
-Edit your schema at unicornflix/amplify/backend/api/unicornflix/schema.graphql or place .graphql files in a directory at unicornflix/amplify/backend/api/unicornflix/schema
+Edit your schema at unicornflix/amplify/backend/api/unicornflix/schema.graphql or 
+place .graphql files in a directory at unicornflix/amplify/backend/api/unicornflix/schema
 
 </pre>
 1. Once the prompts complete, make sure the module was added by checking `amplify status`
-    ![status](images/amplify_status.png)    
+<pre>
+unicornflix $ <b>amplify status</b>
+
+Current Environment: <b>dev</b>
+
+| Category | Resource name       | Operation | Provider plugin   |
+| -------- | ------------------- | --------- | ----------------- |
+| <b>Auth</b>     | <b>unicornflix1e7c3699</b> | Create    | awscloudformation |
+| <b>Auth</b>     | <b>userPoolGroups</b>      | Create    | awscloudformation |
+| <b>Api</b>      | <b>unicornflix</b>         | Create    | awscloudformation |
+| <b>Video</b>    | <b>unicornflix</b>         | Create    | awscloudformation |
+
+</pre>
 1. Now it is time to actually create the resources by pushing the configuration to the cloud. Run `amplify push` to create the backend video resource which is comprised of the services necessary to manage, process, and serve our videos. It will take a few minutes to stage and create the resources in your AWS environment. While that runs, let's take a brief look at what was just created:
 
     ![architecture](images/amplify_arch.png)
