@@ -352,7 +352,6 @@ Create an actual user account using the app sign-up page instead of the Cognito 
     ).subscribe({
       next: (((data) => {
         console.log(data.value.data.onCreateVodAsset);
-        console.log("RIP");
         var newItemList = this.state.items.push(data.value.data.onCreateVodAsset);
         console.log(newItemList);
         this.setState({
