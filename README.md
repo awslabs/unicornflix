@@ -254,11 +254,7 @@ Now that we have an admin user, let's implement the asset upload logic that enab
     <details>
         <summary>Click here to see an example</summary>
 
-<<<<<<< HEAD
-    ```
-=======
     ```javascript
->>>>>>> cffbe7b856e851f4bcbf7eac1026d945bfbc4b07
     Storage.configure({
         AWSS3: {
             bucket: '<BUCKET-NAME>',
@@ -266,18 +262,11 @@ Now that we have an admin user, let's implement the asset upload logic that enab
         }
     })
     ```
-<<<<<<< HEAD
-</details>
-  1. Find the submitFormHandler(event) function and add the following code to the function body. This is the form that contains basic metadata to be submitted alongside the asset upload.
-  ```
-  const object = {
-=======
     </details>
 1. Find the submitFormHandler(event) function and add the following code to the function body. This is the form that contains basic metadata to be submitted alongside the asset upload.
 
     ```javascript
     const object = {
->>>>>>> cffbe7b856e851f4bcbf7eac1026d945bfbc4b07
         input: {
 
             title: this.state.titleVal,
