@@ -220,38 +220,45 @@ Drop in the authenticator component and configure it to wrap the Admin react com
 1. Navigate to unicornflix/src/components/Admin/index.js
     1. At the bottom of the import block, add:
 
-    ```import { withAuthenticator } from 'aws-amplify-react'; ```
-    1. Change line 64 ```export default Admin;``` to:
-
-    ```export default withAuthenticator(Admin, true);```
+        ```javascript
+        import { withAuthenticator } from 'aws-amplify-react'; 
+        ```
+    1. Change line 64 `export default Admin;` to:
+        ```javascript
+        export default withAuthenticator(Admin, true);
+        ```
 
 Create an admin user through the Cognito console. 
 
-  1. Open the AWS Management Console and Search for Cognito.
-  1. Select the blue "Manage User Pools" button
-  1. Select the userpool labeled "Unicornflix"
-  1. Under General Settings, choose "Users and Groups".
-  1. Select the blue "create user" button and enter the user creation form.
-  1. Fill out the form to create a user. Now we will have to add admin privilages in order to enable this user to publish videos through the app.
-  1. Select the user you just created
-  1. Select the blue "Add to Group" button, and select the admin group.
+1. Open the AWS Management Console and Search for Cognito.
+1. Select the blue "Manage User Pools" button
+1. Select the userpool labeled "Unicornflix"
+1. Under General Settings, choose "Users and Groups".
+1. Select the blue "create user" button and enter the user creation form.
+1. Fill out the form to create a user. Now we will have to add admin privilages in order to enable this user to publish videos through the app.
+1. Select the user you just created
+1. Select the blue "Add to Group" button, and select the admin group.
 
 Now that we have an admin user, let's implement the asset upload logic that enables them to create new assets on the platform.
 
-  1. Navigate to unicornflix/src/Components/Admin/index.js
-  1. In the componentDidMount function paste the following code into the function body. Note: you will have to input the name of your unicornflix s3 bucket and region into the object below)
-  ```
-  Storage.configure({
+1. Navigate to unicornflix/src/Components/Admin/index.js
+1. In the componentDidMount function paste the following code into the function body. Note: you will have to input the name of your unicornflix s3 bucket and region into the object below)
+    ```javascript
+    Storage.configure({
       AWSS3: {
           bucket: '<BUCKET-NAME>',
           region: '<REGION>'
       }
     })
-  ```
-<details>
-    <summary>Click here to see an example</summary>
-
     ```
+    <details>
+        <summary>Click here to see an example</summary>
+
+<<<<<<< HEAD
+    ```
+=======
+    ```javascript
+>>>>>>> cffbe7b856e851f4bcbf7eac1026d945bfbc4b07
     Storage.configure({
         AWSS3: {
             bucket: '<BUCKET-NAME>',
@@ -259,50 +266,59 @@ Now that we have an admin user, let's implement the asset upload logic that enab
         }
     })
     ```
+<<<<<<< HEAD
 </details>
   1. Find the submitFormHandler(event) function and add the following code to the function body. This is the form that contains basic metadata to be submitted alongside the asset upload.
   ```
   const object = {
+=======
+    </details>
+1. Find the submitFormHandler(event) function and add the following code to the function body. This is the form that contains basic metadata to be submitted alongside the asset upload.
+
+    ```javascript
+    const object = {
+>>>>>>> cffbe7b856e851f4bcbf7eac1026d945bfbc4b07
         input: {
 
             title: this.state.titleVal,
             description:this.state.descVal
         }
     }
-    
+
     API.graphql(graphqlOperation(createVodAsset, object)).then((response,error) => {
           console.log(response.data.createVodAsset);
     });
-  ```
-  1. Next, staying in the submitFormHandler(event) function, add the following code underneath the API.graphql call. This code will use the storage API to upload the video content to S3 using multipart upload if necessary.
-  ```
-      Storage.put(this.state.fileName, this.state.file, {
+    ```
+1. Next, staying in the submitFormHandler(event) function, add the following code underneath the API.graphql call. This code will use the storage API to upload the video content to S3 using multipart upload if necessary.
+  
+    ```javascript
+    Storage.put(this.state.fileName, this.state.file, {
       contentType: 'video/*'
     })
     .then (result => console.log(result))
     .catch(err => console.log(err));
       event.preventDefault();
-  ```
+    ```
 
 Let's put our implementation of the admin page to the test by uploading an asset.
 
-  1. Navigate back to the application running on your Localhost.
-  1. Log in to the admin user you created. Note: if you were previously logged in before creating your admin user, log out and log back in to refresh your tokens giving you access to post content.
-  1. Navigate to the Admin Panel.
-  1. Fill out the form and select a video with the file picker. 
-  1. Once all the fields have been selected, choose the "submit" button to begin the upload process.
+1. Navigate back to the application running on your Localhost.
+1. Log in to the admin user you created. Note: if you were previously logged in before creating your admin user, log out and log back in to refresh your tokens giving you access to post content.
+1. Navigate to the Admin Panel.
+1. Fill out the form and select a video with the file picker. 
+1. Once all the fields have been selected, choose the "submit" button to begin the upload process.
 
 Since we haven't implemented the user view yet, let's use the AWS console to explore what happened when we created the asset.
 
-  1. Open the aws management console and navigate to the dynamodb service using the search bar.
-  1. In the left hand side bar, choose "Tables"
-  1. You should see 2 Dynamo Tables that were deployed on your behalf: Vodasset- and VideoObject-.
-  1. Select the VodAsset- table and choose "Items" to view the asset you just pushed to the cloud using the Application. Here you can see that the API gave each asset a GUID as well as createdAt/updatedAt feilds.
-  1. In the management console, select the services drop down from the top left corner of the browser screen.
-  1. In the search bar type MediaConvert and navigate to the Elemental MediaConvert service page.
-  1. Expand the left hand side menu and choose "Jobs"
-  1. You should see a transcode job that was kicked off when you uploaded an asset through the console. You can view the input file name to be sure that the upload from the application was successful.
-  1. (Optional) Select the job and select the "View JSON" button in the top right of the screen. Here you can view the job file which was submitted to the Elemental MediaConvert Service. Here, you can view the input and output locations as well as presets used during the transcode process.
+1. Open the aws management console and navigate to the dynamodb service using the search bar.
+1. In the left hand side bar, choose "Tables"
+1. You should see 2 Dynamo Tables that were deployed on your behalf: Vodasset- and VideoObject-.
+1. Select the VodAsset- table and choose "Items" to view the asset you just pushed to the cloud using the Application. Here you can see that the API gave each asset a GUID as well as createdAt/updatedAt feilds.
+1. In the management console, select the services drop down from the top left corner of the browser screen.
+1. In the search bar type MediaConvert and navigate to the Elemental MediaConvert service page.
+1. Expand the left hand side menu and choose "Jobs"
+1. You should see a transcode job that was kicked off when you uploaded an asset through the console. You can view the input file name to be sure that the upload from the application was successful.
+1. (Optional) Select the job and select the "View JSON" button in the top right of the screen. Here you can view the job file which was submitted to the Elemental MediaConvert Service. Here, you can view the input and output locations as well as presets used during the transcode process.
 
 Now that we have a functioning backend with an admin portal, let's setup the end-user view.
 
@@ -310,24 +326,29 @@ Now that we have a functioning backend with an admin portal, let's setup the end
 
  Add the authenticator component to ensure only signed-in users can access videos on UnicornFlix
 
-  1. Navigate to unicornflix/src/components/App/index.js
-  1. At the bottom of the import block, add:
+1. Navigate to unicornflix/src/components/App/index.js
+1. At the bottom of the import block, add:
 
-  ```import { withAuthenticator } from 'aws-amplify-react'; ```
-  1. Change line 23 ```export default App;``` to:
+  ```javascript
+  import { withAuthenticator } from 'aws-amplify-react'; 
+  ```
+1. Change line 23 ```export default App;``` to:
 
-  ```export default withAuthenticator(App, true);```
+  ```javascript
+  export default withAuthenticator(App, true);
+  ```
 
 Create an actual user account using the app sign-up page instead of the Cognito console.
 
-  1. Refresh the tab that the application is running in to see the login page. (react's local dev server may do this for you)
-  1. Create a new user. This user will not be an admin and thus won't have rights to publish content to UnicornFlix.
+1. Refresh the tab that the application is running in to see the login page. (react's local dev server may do this for you)
+1. Create a new user. This user will not be an admin and thus won't have rights to publish content to UnicornFlix.
 
   
 1. TODO - implement Pagination using graphql queries
-    1. Navigate to unicornflix/src/Components/GridView/index.js
-    1. Find Location 1: inside of the componentDidMount function and paste the following code:
-    ```
+1. Navigate to unicornflix/src/Components/GridView/index.js
+1. Find Location 1: inside of the componentDidMount function and paste the following code:
+    
+    ```javascript
     const allTodos = await API.graphql(graphqlOperation(queries.listVodAssets));
     var nextToken = allTodos.data.listVodAssets.nextToken;
     if(nextToken == undefined){
@@ -336,8 +357,9 @@ Create an actual user account using the app sign-up page instead of the Cognito 
     this.setState({items: allTodos.data.listVodAssets.items, nextToken: nextToken})
     this.listenForNewAssets();
     ```
-    1. Find Location 2: inside of the listenForNewAssets function and paste the following code:
-    ```
+1. Find Location 2: inside of the listenForNewAssets function and paste the following code:
+    
+    ```javascript
       const allTodos = await API.graphql(graphqlOperation(queries.listVodAssets,{nextToken:this.state.nextToken}));
       var items = this.state.items.concat(allTodos.data.listVodAssets.items);
       console.log(this.state.token);
@@ -348,24 +370,27 @@ Create an actual user account using the app sign-up page instead of the Cognito 
       this.setState({items: items, nextToken: nextToken});
     ```
 1. TODO - implement GraphQL subscription
-    1. Navigate back to unicornflix/src/Components/GridView/index.js
-    1. Add the following line of code to the bottom of the import block: ```import { onCreateVodAsset } from '../../graphql/subscriptions';```
-    1. Search for the listenForNewAssets function and paste the following code into the function body.
-
+1. Navigate back to unicornflix/src/Components/GridView/index.js
+1. Add the following line of code to the bottom of the import block: 
+    ```javascript
+    import { onCreateVodAsset } from '../../graphql/subscriptions';
     ```
-    API.graphql(
-      graphqlOperation(onCreateVodAsset)
-    ).subscribe({
-      next: (((data) => {
-        console.log(data.value.data.onCreateVodAsset);
-        var newItemList = this.state.items.push(data.value.data.onCreateVodAsset);
-        console.log(newItemList);
-        this.setState({
-            //items:newItemList
-        });
-      }).bind(this))
-    })
-```
+1. Search for the listenForNewAssets function and paste the following code into the function body.
+
+    ```javascript
+        API.graphql(
+          graphqlOperation(onCreateVodAsset)
+        ).subscribe({
+          next: (((data) => {
+            console.log(data.value.data.onCreateVodAsset);
+            var newItemList = this.state.items.push(data.value.data.onCreateVodAsset);
+            console.log(newItemList);
+            this.setState({
+                //items:newItemList
+            });
+          }).bind(this))
+        })
+    ```
 
 1. TODO - playback video
 1. TODO - upload another asset to see the entire workflow function from end-to-end
