@@ -20,8 +20,8 @@ You just started at UnicornFlix and they hooked you up with a brand new laptop -
 
 1. Clone the UnicornFlix workshop by running `git clone https://github.com/wizage/UnicornFlix.git` or by downloading the zip [here](https://github.com/awslabs/unicornflix/archive/master.zip)
 1. Download and install Node and Node Package Manager (NPM) if you don't already have it from [nodejs.org](https://nodejs.org/en/download/). Select **LTS** for the node version.
-1. Install AWS Amplify CLI using this command `npm install -g @aws-amplify/cli`
-1. Install Amplify Video, a custom AWS Amplify CLI plugin for creating our video resource, by running `npm install -g amplify-category-video`
+1. Install/update AWS Amplify CLI using this command `npm install -g @aws-amplify/cli`
+1. Install Amplify Video, a custom AWS Amplify CLI plugin for creating our video resource, by running `npm install -g amplify-category-video@alpha`
 
 ## Backend Deployment with Amplify CLI
 
@@ -92,23 +92,81 @@ unicornflix $ <b>amplify add video</b>
 ? Select a system-provided encoding template, specify an already-created 
   template name:  <b>Placeholder Template</b>
 ? Do you want Amplify to use your existing GraphQL API to manage your videos? <b>Yes</b>
+</pre>
+
+Above we created the first part of amplify video to support transcoding of files. This workflow stands up two S3 buckets with a Lambda trigger that's purpose is to create new   MediaComvert jobs for the files uploaded. The MediaConvert job is configured to use the template you choose in the prompts above.
+
+<pre>
 Video On Demand only supports GraphQL right now.
 If you want to only use API for CMS then choose the default ToDo and don't edit it until later.
 ? Please select from one of the below mentioned services: <b>GraphQL</b>
 ? Provide API name: <b>unicornflix</b>
 ? Choose the default authorization type for the API <b>Amazon Cognito User Pool</b>
+</pre>
+
+Above we dive into create the basic infrastruture for our API. For now Amplify Video for Video on Demand only supports using GraphQL powered by AWS AppSync.
+
+<pre>
 ? Do you want to use the default authentication and security configuration? <b>Default configuration</b>
 ? How do you want users to be able to sign in? <b>Username</b>
 ? Do you want to configure advanced settings? <b>No, I am done.</b>
 Successfully added auth resource
+</pre>
+
+We take advantage of the built in Auth component for Amplify to add basic authentication to our application. We will keep with the defaults as it supports what we need for our application.
+
+<pre>
 ? Do you want to configure advanced settings for the GraphQL API <b>No, I am done.</b>
 ? Do you have an annotated GraphQL schema? <b>No</b>
 ? Do you want a guided schema creation? <b>Yes</b>
 ? What best describes your project: <b>Single object with fields (e.g., “Todo” with ID, name, description)</b>
 ? Do you want to edit the schema now? <b>No</b>
+</pre>
+
+Ignore the fact that we choose Todo and that we don't edit the schema. We will be editing below with the correct values for our application!
+
+<pre>
 ? Do you want to lock your videos with a subscription? <b>No</b>
 ? Do you want to edit your newly created model? <b>Yes</b>
 Please edit the file in your editor: <b>unicornflix/amplify/backend/api/unicornflix/schema.graphql</b>
+</pre>
+
+A new file should open up with your schema. We are going to edit the schema to remove the Todo that was added earlier.
+
+The new schema should look like this if you removed just the Todo model:
+
+```graphql
+type vodAsset @model
+@auth(
+  rules: [
+    {allow: groups, groups:["Admin"], operations: [create, update, delete, read]},
+    {allow: private, operations: [read]}
+  ]
+)
+{
+  id:ID!
+  title:String!
+  description:String!
+
+  #DO NOT EDIT
+  video:videoObject
+} 
+
+#DO NOT EDIT
+type videoObject @model
+@auth(
+  rules: [
+    {allow: groups, groups:["Admin"], operations: [create, update, delete, read]},
+    {allow: private, operations: [read]}
+  ]
+)
+{
+  id:ID!
+  objectID:String!
+}
+```
+
+<pre>
 ? Press enter to continue 
 
 GraphQL schema compiled successfully.
