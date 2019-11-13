@@ -126,8 +126,6 @@ Now that we have an admin user, let's implement the asset upload logic that enab
           region: '<REGION>'
       }
     })
-    .then (result => console.log(result))
-    .catch(err => console.log(err));
   ```
   1. Find the submitFormHandler(event) function and add the following code to the function body. This is the form that contains basic metadata to be submitted alongside the asset upload.
   ```
