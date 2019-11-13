@@ -388,6 +388,29 @@ Create an actual user account using the app sign-up page instead of the Cognito 
 ## Extend the Application
 
 1. TODO - Custom Metadata field (keywords, cast, etc)
+    1. Navigate to `unicornflix/amplify/backend/api/unicornflix/schema.graphql`
+    1. Make a change to the schema by adding a new custom field. For example you could add an Actors field as shown below:
+    
+    ```graphql
+    type vodAsset @model
+    @auth(
+      rules: [
+        {allow: groups, groups:["Admin"], operations: [create, update, delete, read]},
+        {allow: private, operations: [read]}
+      ]
+    )
+    {
+      id:ID!
+      title:String!
+      description:String!
+      genre:[String]
+      #DO NOT EDIT
+      video:videoObject
+    } 
+    ```
+    1. Now we need to push these schema changes to the appsync service. We do this using the `amplify push` command once again.
+    1. Next we can add a new input field in the admin panel form so we can capture our new metadata field each time we upload a new asset. Navigate to `unicornflix/src/components/Admin/index.js` and add a new field to the form similar to how the title field has been implemented.
+    1. If you're feeling brave, try and figure out how you could implement a Actors field so you could search the library by Actor, think about how you could make the form/API accept an array of objects!
 1. TODO - Host your app with amplify console
 
 
