@@ -52,14 +52,68 @@ You just started at UnicornFlix and they hooked you up with a brand new laptop -
     1. When running `amplify init` choose the newly created profile called `ee` (**Note:** please don't select default)
     </details>
 1. Run `amplify init`. This command creates new AWS backend resources (in this case a single S3 bucket to host your cloudformation templates) and pull the AWS service configurations into the app!
-1. Follow the prompts as shown in the below Image.
+1. Follow the prompts as shown below.
     1. **PLEASE DOUBLE CHECK THE PROFILE YOU ARE USING. ONCE YOU CHOOSE ONE YOU CAN'T GO BACK UNLESS YOU DELETE EVERYTHING IN THE CLOUD**
     1. Note that because of the services leveraged, your AWS profile **MUST USE** us-west-2, us-east-1, eu-west-1, eu-central-1, ap-northeast-1, or ap-southeast-2.
-    ![init](images/amplify_init.png)
+ 
+    
+    
+    <pre>
+    unicornflix $ <b>amplify init</b>
+    
+    Note: It is recommended to run this command from the root of your app directory
+    ? Enter a name for the project: <b>unicornflix</b>
+    ? Enter a name for the environment <b>dev</b>
+    ? Choose your default editor: <b>Visual Studio Code</b>
+    ? Choose the type of app that you're building <b>javascript</b>
+    Please tell us about your project
+    ? What javascript framework are you using <b>react</b>
+    ? Source Directory Path:  <b>src</b>
+    ? Distribution Directory Path: <b>build</b>
+    ? Build Command:  <b>npm run-script build</b>
+    ? Start Command: <b>npm run-script start</b>
+    Using default provider  <b>awscloudformation</b>
+
+    For more information on AWS Profiles, see:
+    https://docs.aws.amazon.com/cli/latest/userguide/cli-multiple-profiles.html
+
+    ? Do you want to use an AWS profile? <b>Yes</b>
+    ? Please choose the profile you want to use <b>ee</b>
+    </pre>
+    
+    
 1. Now, add the amplify video module to the project using `amplify video add`
-1. Follow the prompts as shown in the image below. We'll be building in a basic content management system (CMS) as part of our VOD platform.
-     ![add](images/amplify_add.png)
-     ![add](images/amplify_api.png) 
+1. Follow the prompts as shown below. We'll be building in a basic content management system (CMS) as part of our VOD platform.
+<pre>
+unicornflix $ <b>amplify add video</b>
+? Please select from one of the below mentioned services: <b>Video On Demand (alpha)</b>
+? Provide a friendly name for your resource to be used as a label for this category in the project: <b>unicornflix</b>
+? Select a system-provided encoding template, specify an already-created template name:  <b>Placeholder Template</b>
+? Do you want Amplify to use your existing GraphQL API to manage your videos? <b>Yes</b>
+Video On Demand only supports GraphQL right now.
+If you want to only use API for CMS then choose the default ToDo and don't edit it until later.
+? Please select from one of the below mentioned services: <b>GraphQL</b>
+? Provide API name: <b>unicornflix</b>
+? Choose the default authorization type for the API <b>Amazon Cognito User Pool</b>
+? Do you want to use the default authentication and security configuration? <b>Default configuration</b>
+? How do you want users to be able to sign in? <b>Username</b>
+? Do you want to configure advanced settings? <b>No, I am done.</b>
+Successfully added auth resource
+? Do you want to configure advanced settings for the GraphQL API <b>No, I am done.</b>
+? Do you have an annotated GraphQL schema? <b>No</b>
+? Do you want a guided schema creation? <b>Yes</b>
+? What best describes your project: <b>Single object with fields (e.g., “Todo” with ID, name, description)</b>
+? Do you want to edit the schema now? <b>No</b>
+? Do you want to lock your videos with a subscription? <b>No</b>
+? Do you want to edit your newly created model? <b>Yes</b>
+Please edit the file in your editor: <b>unicornflix/amplify/backend/api/unicornflix/schema.graphql</b>
+? Press enter to continue 
+
+GraphQL schema compiled successfully.
+
+Edit your schema at unicornflix/amplify/backend/api/unicornflix/schema.graphql or place .graphql files in a directory at unicornflix/amplify/backend/api/unicornflix/schema
+
+</pre>
 1. Once the prompts complete, make sure the module was added by checking `amplify status`
     ![status](images/amplify_status.png)    
 1. Now it is time to actually create the resources by pushing the configuration to the cloud. Run `amplify push` to create the backend video resource which is comprised of the services necessary to manage, process, and serve our videos. It will take a few minutes to stage and create the resources in your AWS environment. While that runs, let's take a brief look at what was just created:
