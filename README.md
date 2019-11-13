@@ -18,7 +18,7 @@ The workshop is split into three primary sections with a collection of optional 
 
 You just started at UnicornFlix and they hooked you up with a brand new laptop - _sweeeet!_ Now let's configure your development environment. 
 
-1. Clone the UnicornFlix workshop by running `git clone https://github.com/wizage/UnicornFlix.git` or by downloading the zip [here](https://github.com/awslabs/unicornflix/archive/master.zip)
+1. Clone the UnicornFlix workshop by running `git clone https://github.com/awslabs/UnicornFlix.git` or by downloading the zip [here](https://github.com/awslabs/unicornflix/archive/master.zip)
 1. Download and install Node and Node Package Manager (NPM) if you don't already have it from [nodejs.org](https://nodejs.org/en/download/). Select **LTS** for the node version.
 1. Install/update AWS Amplify CLI using this command `npm install -g @aws-amplify/cli`
 1. Install Amplify Video, a custom AWS Amplify CLI plugin for creating our video resource, by running `npm install -g amplify-category-video@alpha`
@@ -136,7 +136,7 @@ A new file should open up with your schema. We are going to edit the schema to r
 The new schema should look like this if you removed just the Todo model:
 
 ```graphql
-type vodAsset @model
+type vodAsset @model (subscriptions: {level: public})
 @auth(
   rules: [
     {allow: groups, groups:["Admin"], operations: [create, update, delete, read]},
@@ -199,50 +199,52 @@ With the infrastructure deployed, let's test processing and streaming a video as
 
 1. Open the S3 console and upload a small video file to the 'Input Storage Bucket' which was returned when you ran amplify push. You can download and upload [this sample clip](images/sample.mp4) if you don't have your own video handy.
 1. Check the MediaConvert console, you should see an asset in 'progressing' shortly after the upload to S3 completes. Once the MediaConvert job is finished, continue on to the next step.
-1. In the 'Output Storage Bucket' you should see a .m3u8 manifest object. Select all objects and select 'make public.' DO NOT do this with a bucket or content that is private this is only for workshop demonstration and testing purposes.
-1. Finally, access the .m3u8 object url from the properties page of S3 and open it in safari, iOS, or by using a test player like the [JW Player Stream Tester](https://developer.jwplayer.com/tools/stream-tester/)
+1. In the 'Output Storage Bucket' you should see a .m3u8 manifest object under the /outputs prefix that matches the filename of the video uploaded. Select all objects and select 'make public.' DO NOT do this with a bucket or content that is private this is only for workshop demonstration and testing purposes.
+1. Click the checkbox in the S3 console next to the .m3u8 object to open the information panel. Copy the Object URL and paste it into safari, iOS, VLC, or by using a test player like the [JW Player Stream Tester](https://developer.jwplayer.com/tools/stream-tester/)
 
 Congratulations! You are hosting a Video-on-Demand platform on AWS! Now let's setup a website that we will use to upload more content and deliver it to viewers.
 
 ## Web Client Admin View  
 
-We've pre-created a web application that will serve as the basis for your development. The application is split into two views. The Admin view allows UnicornFlix employees video management capabilities and the User view is where subscribers access content after they've logged into the site.
+This workshop provides a react application that will serve as the basis for your development and is split into two views. The Admin view provides UnicornFlix employees video management capabilities and the User view is where subscribers access content after they've logged into the site.
 
-1. To install the dependencies necessary to run the website locally run `npm install` from the UnicornFlix directory. Some notable packages include:
-  - `aws-amplify` - A javascript library that provides a declarative interface across amplify catagories, like auth, in order to make them easier to add them into your application
-  - `aws-amplify-react` - A UI component library for React to use with the CLI resources
-1. Next, to run the website with a local development environment run `npm start` and navigate to the page running on localhost.
+1. To install the dependencies necessary to run the website locally run `npm install` from the UnicornFlix directory. Notable packages include:
+    - `aws-amplify` - A javascript library that provides a declarative interface across amplify catagories, like auth, in order to make them easier to add them into your application
+    - `aws-amplify-react` - A UI component library for React to use with the CLI resources
+1. Next, to run the website with a local development environment run `npm start` and navigate to the page running on localhost. The site has navigation items, but none of them work yet.
 
-![architecture](images/website_empty.png) TODO - Update with screenshot of empty site
+![architecture](images/app_empty.png) 
 
-Drop in the authenticator component and configure it to wrap the Admin react component that renders the Admin page.
+Let's start with the Admin functionality as this will allow us to create new content. Drop in the authenticator component and configure it to wrap the Admin react component that renders the Admin page.
 
-1. Navigate to unicornflix/src/components/Admin/index.js
-    1. At the bottom of the import block, add:
+1. In an IDE open `unicornflix/src/components/Admin/index.js`
+1. At the bottom of the import block, add the following statement to bring in the Authenticator component:
 
-        ```javascript
-        import { withAuthenticator } from 'aws-amplify-react'; 
-        ```
-    1. Change line 64 `export default Admin;` to:
-        ```javascript
-        export default withAuthenticator(Admin, true);
-        ```
+    ```javascript
+    import { withAuthenticator } from 'aws-amplify-react'; 
+    ```
+1. Replace `export default Admin;` to the following statement which wraps the Admin page with the newly imported Authenticator component:
+    ```javascript
+    export default withAuthenticator(Admin, true);
+    ```
 
-Create an admin user through the Cognito console. 
+Now we need and Admin user to test out the authentication functionality, let's create an admin user through the Cognito console. 
 
 1. Open the AWS Management Console and Search for Cognito.
 1. Select the blue "Manage User Pools" button
 1. Select the userpool labeled "Unicornflix"
-1. Under General Settings, choose "Users and Groups".
+1. Under General Settings, choose "Users and Groups"
 1. Select the blue "create user" button and enter the user creation form.
 1. Fill out the form to create a user. Now we will have to add admin privilages in order to enable this user to publish videos through the app.
 1. Select the user you just created
 1. Select the blue "Add to Group" button, and select the admin group.
 
+TODO - phone number info is specific and temp password? should we have them login to the app to test this worked?
+
 Now that we have an admin user, let's implement the asset upload logic that enables them to create new assets on the platform.
 
-1. Navigate to unicornflix/src/Components/Admin/index.js
-1. In the componentDidMount function paste the following code into the function body. Note: you will have to input the name of your unicornflix s3 bucket and region into the object below)
+1. In and IDE, Open `unicornflix/src/Components/Admin/index.js`
+1. In the componentDidMount function paste the following code into the function body. You must provide the name of your unicornflix s3 input bucket and region into the object below.
     ```javascript
     Storage.configure({
       AWSS3: {
@@ -257,8 +259,8 @@ Now that we have an admin user, let's implement the asset upload logic that enab
     ```javascript
     Storage.configure({
         AWSS3: {
-            bucket: '<BUCKET-NAME>',
-            region: '<REGION>'
+            bucket: 'unicornflix-dev-oyvaxtp2h',
+            region: 'us-west-2'
         }
     })
     ```
@@ -278,7 +280,7 @@ Now that we have an admin user, let's implement the asset upload logic that enab
           console.log(response.data.createVodAsset);
     });
     ```
-1. Next, staying in the submitFormHandler(event) function, add the following code underneath the API.graphql call. This code will use the storage API to upload the video content to S3 using multipart upload if necessary.
+1. Next, staying in the submitFormHandler(event) function, add the following code underneath the API.graphql call. This code will use the storage API to upload the video content to S3 and use multipart upload if necessary.
   
     ```javascript
     Storage.put(this.state.fileName, this.state.file, {
@@ -294,46 +296,49 @@ Let's put our implementation of the admin page to the test by uploading an asset
 1. Navigate back to the application running on your Localhost.
 1. Log in to the admin user you created. Note: if you were previously logged in before creating your admin user, log out and log back in to refresh your tokens giving you access to post content.
 1. Navigate to the Admin Panel.
-1. Fill out the form and select a video with the file picker. 
+1. Fill out the form and select a video with the file picker or use the sample video located in `/images/sample.mp4` 
 1. Once all the fields have been selected, choose the "submit" button to begin the upload process.
+
+TODO - clean up login on app and provide some progress indicator
 
 Since we haven't implemented the user view yet, let's use the AWS console to explore what happened when we created the asset.
 
 1. Open the aws management console and navigate to the dynamodb service using the search bar.
 1. In the left hand side bar, choose "Tables"
 1. You should see 2 Dynamo Tables that were deployed on your behalf: Vodasset- and VideoObject-.
-1. Select the VodAsset- table and choose "Items" to view the asset you just pushed to the cloud using the Application. Here you can see that the API gave each asset a GUID as well as createdAt/updatedAt feilds.
+1. Select the VodAsset- table and choose "Items" to view the asset you just pushed to the cloud using the Application. Here you can see that the API gave each asset a GUID as well as createdAt/updatedAt fields.
+    ![dynamo](images/vod_asset.png) 
 1. In the management console, select the services drop down from the top left corner of the browser screen.
 1. In the search bar type MediaConvert and navigate to the Elemental MediaConvert service page.
 1. Expand the left hand side menu and choose "Jobs"
-1. You should see a transcode job that was kicked off when you uploaded an asset through the console. You can view the input file name to be sure that the upload from the application was successful.
+1. You should see a job that was kicked off when you uploaded an asset through the console. You can view the input file name to be sure that the upload from the application was successful.
 1. (Optional) Select the job and select the "View JSON" button in the top right of the screen. Here you can view the job file which was submitted to the Elemental MediaConvert Service. Here, you can view the input and output locations as well as presets used during the transcode process.
 
 Now that we have a functioning backend with an admin portal, let's setup the end-user view.
 
 ## Web Client User View
 
- Add the authenticator component to ensure only signed-in users can access videos on UnicornFlix
+ Again we need to include the authenticator component. For this view, it's used to ensure only signed-in users can access videos on UnicornFlix
 
-1. Navigate to unicornflix/src/components/App/index.js
+1. In an IDE, open `unicornflix/src/components/App/index.js`
 1. At the bottom of the import block, add:
 
   ```javascript
   import { withAuthenticator } from 'aws-amplify-react'; 
   ```
-1. Change line 23 ```export default App;``` to:
+1. Change ```export default App;``` to the following statement which wraps the react App component with the amplify Authenticator.
 
   ```javascript
   export default withAuthenticator(App, true);
   ```
 
-Create an actual user account using the app sign-up page instead of the Cognito console.
+Create a user account using the app sign-up page instead of the Cognito console.
 
 1. Refresh the tab that the application is running in to see the login page. (react's local dev server may do this for you)
-1. Create a new user. This user will not be an admin and thus won't have rights to publish content to UnicornFlix.
+1. Create a new user. This user will not be an admin and thus won't have rights to publish content to UnicornFlix. Make sure to provide a valid email to activate your account. The code may take a minute or two to arrive in your inbox.
 
-  
-1. TODO - implement Pagination using graphql queries
+Now we need to render the videos on our site for our viewers. Let's start by submitting a query for existing content.
+
 1. Navigate to unicornflix/src/Components/GridView/index.js
 1. Find Location 1: inside of the componentDidMount function and paste the following code:
     
@@ -358,7 +363,9 @@ Create an actual user account using the app sign-up page instead of the Cognito 
       }
       this.setState({items: items, nextToken: nextToken});
     ```
-1. TODO - implement GraphQL subscription
+
+You should now see any content that you've previously uploaded through the Admin view. Let's also setup a subscription so that new content uploaded will appear for users already viewing the application.
+
 1. Navigate back to unicornflix/src/Components/GridView/index.js
 1. Add the following line of code to the bottom of the import block: 
     ```javascript
