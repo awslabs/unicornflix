@@ -251,14 +251,14 @@ Now that we have an admin user, let's implement the asset upload logic that enab
 <details>
     <summary>Click here to see an example</summary>
 
-    
+    ```
     Storage.configure({
         AWSS3: {
             bucket: '<BUCKET-NAME>',
             region: '<REGION>'
         }
     })
-    
+    ```
 </details>
   1. Find the submitFormHandler(event) function and add the following code to the function body. This is the form that contains basic metadata to be submitted alongside the asset upload.
   ```
