@@ -210,17 +210,13 @@ Congratulations! You are hosting a Video-on-Demand platform on AWS! Now let's se
 
 We've pre-created a web application that will serve as the basis for your development. The application is split into two views. The Admin view allows UnicornFlix employees video management capabilities and the User view is where subscribers access content after they've logged into the site.
 
-1. To install the dependencies necessary to run the website locally run `npm install` from the UnicornFlix directory
+1. To install the dependencies necessary to run the website locally run `npm install` from the UnicornFlix directory. Some notable packages include:
+  - `aws-amplify` - A javascript library that provides a declarative interface across amplify catagories, like auth, in order to make them easier to add them into your application
+  - `aws-amplify-react` - A UI component library for React to use with the CLI resources
 1. Next, to run the website with a local development environment run `npm start` and navigate to the page running on localhost.
 
 ![architecture](images/website_empty.png) TODO - Update with screenshot of empty site
 
-1. We will need to add two more npm packages to the client that are part of the Amplify ecosystem. aws-amplify is a javascript library that provides a declarative interface across amplify catagories, like auth, in order to make them easier to add them into your application. aws-amplify-react applies similar interfaces for the React framework.
-
-```
-npm i aws-amplify
-npm i aws-amplify-react
-```
 Drop in the authenticator component and configure it to wrap the Admin react component that renders the Admin page.
 
 1. Navigate to unicornflix/src/components/Admin/index.js
