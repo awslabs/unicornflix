@@ -195,8 +195,6 @@ Current Environment: <b>dev</b>
 
 In addition to these services, Amplify Video also manages a Amazon Cognito user pool to handle authentication. We'll use this later to handle log-in and grant administration privileges for specific users.
 
-TODO - Explain the resources created by amplify video (specifically what each resource is doing)
-
 With the infrastructure deployed, let's test processing and streaming a video asset. 
 
 1. Open the S3 console and upload a small video file to the 'Input Storage Bucket' which was returned when you ran amplify push. You can download and upload [this sample clip](images/sample.mp4) if you don't have your own video handy.
