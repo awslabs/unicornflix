@@ -195,8 +195,6 @@ Current Environment: <b>dev</b>
 
 In addition to these services, Amplify Video also manages a Amazon Cognito user pool to handle authentication. We'll use this later to handle log-in and grant administration privileges for specific users.
 
-TODO - Explain the resources created by amplify video (specifically what each resource is doing)
-
 With the infrastructure deployed, let's test processing and streaming a video asset. 
 
 1. Open the S3 console and upload a small video file to the 'Input Storage Bucket' which was returned when you ran amplify push. You can download and upload [this sample clip](images/sample.mp4) if you don't have your own video handy.
@@ -250,6 +248,18 @@ Now that we have an admin user, let's implement the asset upload logic that enab
       }
     })
   ```
+<details>
+    <summary>Click here to see an example</summary>
+
+    
+    Storage.configure({
+        AWSS3: {
+            bucket: '<BUCKET-NAME>',
+            region: '<REGION>'
+        }
+    })
+    
+</details>
   1. Find the submitFormHandler(event) function and add the following code to the function body. This is the form that contains basic metadata to be submitted alongside the asset upload.
   ```
   const object = {
