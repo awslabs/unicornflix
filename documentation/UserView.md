@@ -100,7 +100,6 @@ Now that our users can play back our content, let's add a real time content syst
     ```javascript
     this.listenForNewAssets();
     ```
-
-1. TODO - upload another asset to see the entire workflow function from end-to-end
+1. Now that you have the app fully functional, try uploading another asset to the system through the admin panel and see the video appear in the site. If all goes well, you'll have a functional video-on-demand application. 
 
 Congratulations on completing the workshop! [Click here](./Extensions.md) to learn how to extend the application and take on some tougher developer challenges!
