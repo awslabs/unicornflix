@@ -390,7 +390,7 @@ You should now see any content that you've previously uploaded through the Admin
 
 ## Extend the Application
 
-1. TODO - Custom Metadata field (keywords, cast, etc)
+### Custom Metadata field (keywords, cast, etc)
     1. Navigate to `unicornflix/amplify/backend/api/unicornflix/schema.graphql`
     1. Make a change to the schema by adding a new custom field. For example you could add an Actors field as shown below:
     
