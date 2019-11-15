@@ -66,7 +66,7 @@ Now that we have an admin user, let's implement the asset upload logic that enab
 
     Storage.configure({
       AWSS3: {
-        bucket: awsvideoconfig.awsOutputVideo,
+        bucket: awsvideoconfig.awsInputVideo,
         region: '<REGION>',
       },
     });
@@ -96,7 +96,7 @@ Now that we have an admin user, let's implement the asset upload logic that enab
     };
 
     API.graphql(graphqlOperation(createVideoObject, videoObject)).then((response, error) => {
-      if (error !== undefined) {
+      if (error === undefined) {
         const { titleVal, descVal, file } = this.state;
         const videoAsset = {
           input: {
