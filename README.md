@@ -427,11 +427,16 @@ You should now see any content that you've previously uploaded through the Admin
     ![Amplify Splash](./images/amplify_splash.png)
 
     1. On the following screen, choose connect app.
+    ![Amplify Connect](./images/amplify_connect.png)
     1. Choose Github (or whichever of the supported git providers your repo is hosted in)
+    ![Amplify git](./images/amplify_git.png)
     1. Next, you will have to authenticate the AWS Amplify service to access your repositories so that it can pull the application code for hosting. Log in with your Github account credentials and then authorize Amplify.
+    ![Amplify git_auth](./images/amplify_git_auth.png)
     1. We now must choose our new repository(the one in your personal github account) which we previously pushed the application files too. 
+    ![Amplify choose_repo](./images/amplify_choose_repo.png)
     1. Choose the master branch and hit 'Next'.
     1. On the configure build settings screen, leave everything as default and then choose 'Next' at the bottom of the screen.
     1. On the review screen review all the choices you have made thus far and hit 'save and deploy'.
+    ![Amplify deploy](./images/amplify_deploy.png)
     
 
