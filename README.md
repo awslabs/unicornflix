@@ -415,5 +415,23 @@ You should now see any content that you've previously uploaded through the Admin
     1. Next we can add a new input field in the admin panel form so we can capture our new metadata field each time we upload a new asset. Navigate to `unicornflix/src/components/Admin/index.js` and add a new field to the form similar to how the title field has been implemented.
     1. If you're feeling brave, try and figure out how you could implement a Actors field so you could search the library by Actor, think about how you could make the form/API accept an array of objects!
 1. TODO - Host your app with amplify console
+    1. To submit an application for hosting, the Amplify service requires your project to be commited to a git repository.
+    1. Navigate to GitHub (or codecommit, gitlab, or bitbucket if you prefer!)
+    1. Create a new repository in your personal github account called unicornflix.
+    1. Return to the terminal window which is in the unicornflix/ directory of your project.
+    1. Run the git command `git remote add amplify git@github.com:YOUR-GITHUB-USERNAME/unicorntrivia.git`
+    1. Run `git push amplify amplify`
+    1. If you navigate to your personal repo in the browser, all your application files should now be committed.
+    1. Next, Navigate the the AWS Management Console. Search for the 'Amplify' Service in the search bar.
+    1. Once you reach the Amplify service splash page, expand the left hand side corner by clicking the `≡` icon and select 'All Apps'.
+    ![Amplify Splash](./images/amplify_splash.png)
 
+    1. On the following screen, choose connect app.
+    1. Choose Github (or whichever of the supported git providers your repo is hosted in)
+    1. Next, you will have to authenticate the AWS Amplify service to access your repositories so that it can pull the application code for hosting. Log in with your Github account credentials and then authorize Amplify.
+    1. We now must choose our new repository(the one in your personal github account) which we previously pushed the application files too. 
+    1. Choose the master branch and hit 'Next'.
+    1. On the configure build settings screen, leave everything as default and then choose 'Next' at the bottom of the screen.
+    1. On the review screen review all the choices you have made thus far and hit 'save and deploy'.
+    
 
