@@ -1,13 +1,8 @@
 import React from 'react';
 import './index.css';
-import {
-  Auth, API, graphqlOperation, Storage,
-} from 'aws-amplify';
-import { withAuthenticator } from 'aws-amplify-react';
 import uuidv4 from 'uuid/v4';
-import { createVodAsset, createVideoObject } from '../../graphql/mutations';
-import awsvideoconfig from '../../aws-video-exports';
 import FilePicker from '../FilePicker';
+// Place the imports for Admin/index.jsx here
 
 class Admin extends React.Component {
   constructor(props) {
@@ -21,20 +16,7 @@ class Admin extends React.Component {
   }
 
   componentDidMount() {
-    Auth.currentSession()
-      .then((data) => {
-        const groups = data.idToken.payload['cognito:groups'];
-        if (groups) {
-          this.setState({ groups: data.idToken.payload['cognito:groups'] });
-        }
-      });
-
-    Storage.configure({
-      AWSS3: {
-        bucket: awsvideoconfig.awsOutputVideo,
-        region: 'us-west-2',
-      },
-    });
+    // Place the Auth currentSession and Storage configure for Admin/index.jsx here
   }
 
   myCallback = (dataFromChild) => {
@@ -58,34 +40,7 @@ class Admin extends React.Component {
 
   submitFormHandler(event) {
     event.preventDefault();
-
-    const uuid = uuidv4();
-
-    const videoObject = {
-      input: {
-        id: uuid,
-        objectID: uuid,
-      },
-    };
-
-    API.graphql(graphqlOperation(createVideoObject, videoObject)).then((response, error) => {
-      if (error !== undefined) {
-        const { titleVal, descVal, file } = this.state;
-        const videoAsset = {
-          input: {
-            title: titleVal,
-            description: descVal,
-            vodAssetVideoId: uuid,
-          },
-        };
-        API.graphql(graphqlOperation(createVodAsset, videoAsset));
-        Storage.put(`${uuid}.mp4`, file, {
-          contentType: 'video/*',
-        })
-          .then(() => console.log(`Successfully Uploaded: ${uuid}`))
-          .catch((err) => console.log(`Error: ${err}`));
-      }
-    });
+    // Place the form upload code for Admin/index.jsx here
   }
 
   createAdminPanel() {
@@ -128,4 +83,4 @@ class Admin extends React.Component {
   }
 }
 
-export default withAuthenticator(Admin, true);
+export default Admin;

@@ -1,11 +1,6 @@
 import React from 'react';
 import './App.css';
-import Amplify from 'aws-amplify';
-import { withAuthenticator } from 'aws-amplify-react';
 import GridView from '../GridView';
-import awsconfig from '../../aws-exports';
-
-Amplify.configure(awsconfig);
 
 function App() {
   return (
@@ -18,4 +13,4 @@ function App() {
   );
 }
 
-export default withAuthenticator(App, true);
+export default App;
