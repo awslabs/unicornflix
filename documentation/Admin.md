@@ -91,7 +91,6 @@ Now that we have an admin user, let's implement the asset upload logic that enab
     const videoObject = {
       input: {
         id: uuid,
-        objectID: uuid,
       },
     };
 
