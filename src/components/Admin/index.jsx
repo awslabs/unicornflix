@@ -37,95 +37,95 @@ class Admin extends React.Component {
     });
   }
 
-    myCallback = (dataFromChild) => {
-      this.setState({
-        file: dataFromChild,
-      });
-    }
+  myCallback = (dataFromChild) => {
+    this.setState({
+      file: dataFromChild,
+    });
+  }
 
-    handleChange(event) {
-      const { value } = event.target;
-      const { name } = event.target;
-      this.setState({
-        [name]: value,
-      });
-    }
+  handleChange(event) {
+    const { value } = event.target;
+    const { name } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  }
 
-    handledescChange(event) {
-      this.setState({ descVal: event.target.value });
-    }
+  handledescChange(event) {
+    this.setState({ descVal: event.target.value });
+  }
 
 
-    submitFormHandler(event) {
-      event.preventDefault();
+  submitFormHandler(event) {
+    event.preventDefault();
 
-      const uuid = uuidv4();
+    const uuid = uuidv4();
 
-      const videoObject = {
-        input: {
-          id: uuid,
-          objectID: uuid,
-        },
-      };
+    const videoObject = {
+      input: {
+        id: uuid,
+        objectID: uuid,
+      },
+    };
 
-      API.graphql(graphqlOperation(createVideoObject, videoObject)).then((response, error) => {
-        if (error !== undefined) {
-          const { titleVal, descVal, file } = this.state;
-          const videoAsset = {
-            input: {
-              title: titleVal,
-              description: descVal,
-              vodAssetVideoId: uuid,
-            },
-          };
-          API.graphql(graphqlOperation(createVodAsset, videoAsset));
-          Storage.put(`${uuid}.mp4`, file, {
-            contentType: 'video/*',
-          })
-            .then(() => console.log(`Successfully Uploaded: ${uuid}`))
-            .catch((err) => console.log(`Error: ${err}`));
-        }
-      });
-    }
-
-    createAdminPanel() {
-      const { groups, titleVal, descVal } = this.state;
-      if (groups.includes('Admin')) {
-        return (
-          <div>
-            <h1>Admin Panel</h1>
-            <form onSubmit={this.submitFormHandler}>
-              <div>
-              Title:
-                {' '}
-                <input type="text" value={titleVal} name="titleVal" onChange={this.handleChange} />
-                <br />
-              Description:
-                {' '}
-                <br />
-                <textarea rows="4" cols="50" value={descVal} name="descVal" onChange={this.handleChange} />
-                <br />
-                <FilePicker callbackFromParent={this.myCallback} />
-                <input type="submit" value="Submit" />
-              </div>
-            </form>
-          </div>
-        );
+    API.graphql(graphqlOperation(createVideoObject, videoObject)).then((response, error) => {
+      if (error !== undefined) {
+        const { titleVal, descVal, file } = this.state;
+        const videoAsset = {
+          input: {
+            title: titleVal,
+            description: descVal,
+            vodAssetVideoId: uuid,
+          },
+        };
+        API.graphql(graphqlOperation(createVodAsset, videoAsset));
+        Storage.put(`${uuid}.mp4`, file, {
+          contentType: 'video/*',
+        })
+          .then(() => console.log(`Successfully Uploaded: ${uuid}`))
+          .catch((err) => console.log(`Error: ${err}`));
       }
+    });
+  }
+
+  createAdminPanel() {
+    const { groups, titleVal, descVal } = this.state;
+    if (groups.includes('Admin')) {
       return (
         <div>
+          <h1>Admin Panel</h1>
+          <form onSubmit={this.submitFormHandler}>
+            <div>
+              Title:
+              {' '}
+              <input type="text" value={titleVal} name="titleVal" onChange={this.handleChange} />
+              <br />
+              Description:
+              {' '}
+              <br />
+              <textarea rows="4" cols="50" value={descVal} name="descVal" onChange={this.handleChange} />
+              <br />
+              <FilePicker callbackFromParent={this.myCallback} />
+              <input type="submit" value="Submit" />
+            </div>
+          </form>
+        </div>
+      );
+    }
+    return (
+      <div>
         Not Authenticated
-        </div>
-      );
-    }
+      </div>
+    );
+  }
 
-    render() {
-      return (
-        <div className="App-header">
-          {this.createAdminPanel()}
-        </div>
-      );
-    }
+  render() {
+    return (
+      <div className="App-header">
+        {this.createAdminPanel()}
+      </div>
+    );
+  }
 }
 
 export default withAuthenticator(Admin, true);
