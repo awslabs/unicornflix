@@ -435,8 +435,16 @@ You should now see any content that you've previously uploaded through the Admin
     1. We now must choose our new repository(the one in your personal github account) which we previously pushed the application files too. 
     ![Amplify choose_repo](./images/amplify_choose_repo.png)
     1. Choose the master branch and hit 'Next'.
-    1. On the configure build settings screen, leave everything as default and then choose 'Next' at the bottom of the screen.
+    1. On the configure build settings screen, for the question 'Would you like Amplify Console to deploy changes to these resources with your frontend?" choose your amplify environment (most likely dev)
+    1. Next, choose the 'Create new role' button to allow amplify to access your AWS infrastructure.
+    ![Amplify build_create](./images/amplify_build_create_role.png)
+    1. On the 'Select type of trusted entity' page, leave everything as default and choose 'Next:Permissions"
+    ![Amplify console_role](./images/amplify_choose_repo.png)
+    1. On the Review screen, leave everything as default and choose the blue 'Create Role' button.
+    ![Amplify create_role](./images/amplify_create_role.png)
     1. On the review screen review all the choices you have made thus far and hit 'save and deploy'.
+    1. Navigate back to the tab where you were working in the amplify service. Click the '⟳' button next to 'Choose an existing service role or create a new one' input field. Click the drop down and choose the role you just created.
+    ![Amplify build_create](./images/amplify_role_created.png)
     ![Amplify deploy](./images/amplify_deploy.png)
     
 
