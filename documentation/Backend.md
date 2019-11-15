@@ -123,7 +123,7 @@ type vodAsset @model (subscriptions: {level: public})
   description:String!
 
   #DO NOT EDIT
-  video:videoObject
+  video:videoObject @connection
 } 
 
 #DO NOT EDIT
