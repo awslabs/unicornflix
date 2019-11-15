@@ -162,7 +162,6 @@ type videoObject @model
 )
 {
   id:ID!
-  objectID:String!
 }
 ```
 
