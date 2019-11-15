@@ -102,3 +102,5 @@ Now that our users can play back our content, let's add a real time content syst
     ```
 
 1. TODO - upload another asset to see the entire workflow function from end-to-end
+
+Congratulations on completing the workshop! [Click here](./Extensions.md) to learn how to extend the application and take on some tougher developer challenges!

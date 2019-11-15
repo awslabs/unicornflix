@@ -135,4 +135,4 @@ Since we haven't implemented the user view yet, let's use the AWS console to exp
 1. You should see a job that was kicked off when you uploaded an asset through the console. You can view the input file name to be sure that the upload from the application was successful.
 1. (Optional) Select the job and select the "View JSON" button in the top right of the screen. Here you can view the job file which was submitted to the Elemental MediaConvert Service. Here, you can view the input and output locations as well as presets used during the transcode process.
 
-Now that we have a functioning backend with an admin portal, let's setup the end-user view.
+Now that we have a functioning backend with an admin portal, [let's set up the end user view!](./UserView.md).

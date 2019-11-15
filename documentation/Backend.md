@@ -168,7 +168,7 @@ Now it is time to actually create the resources by pushing the configuration to 
 
 1. Run `amplify push` to create the backend video resource which is comprised of the services necessary to manage, process, and serve our videos. It will take a few minutes to stage and create the resources in your AWS environment. While that runs, let's take a brief look at what was just created:
 
-  ![architecture](images/amplify_arch.png)
+  ![architecture](../images/amplify_arch.png)
 
 In addition to these services, Amplify Video also manages a Amazon Cognito user pool to handle authentication. We'll use this later to handle log-in and grant administration privileges for specific users.
 
@@ -179,5 +179,5 @@ With the infrastructure deployed, let's test processing and streaming a video as
 1. In the 'Output Storage Bucket' you should see a .m3u8 manifest object under the /outputs prefix that matches the filename of the video uploaded. Select all objects and select 'make public.' DO NOT do this with a bucket or content that is private this is only for workshop demonstration and testing purposes.
 1. Click the checkbox in the S3 console next to the .m3u8 object to open the information panel. Copy the Object URL and paste it into safari, iOS, VLC, or by using a test player like the [JW Player Stream Tester](https://developer.jwplayer.com/tools/stream-tester/)
 
-Congratulations! You are hosting a Video-on-Demand platform on AWS! Now let's setup a website that we will use to upload more content and deliver it to viewers.
+Congratulations! You are hosting a Video-on-Demand platform on AWS! Now let's setup a website that we will use to upload more content and deliver it to viewers.[Click Here to move onwards to Admin View!](./Admin.md)
 
