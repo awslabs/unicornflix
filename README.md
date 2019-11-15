@@ -442,9 +442,27 @@ You should now see any content that you've previously uploaded through the Admin
     ![Amplify console_role](./images/amplify_choose_repo.png)
     1. On the Review screen, leave everything as default and choose the blue 'Create Role' button.
     ![Amplfiy create_role](./images/amplfiy_create_role.png)
-    1. On the review screen review all the choices you have made thus far and hit 'save and deploy'.
     1. Navigate back to the tab where you were working in the amplify service. Click the '⟳' button next to 'Choose an existing service role or create a new one' input field. Click the drop down and choose the role you just created.
     ![Amplify build_create](./images/amplify_role_created.png)
+    1. On the review screen review all the choices you have made thus far and hit 'save and deploy'.
     ![Amplify deploy](./images/amplify_deploy.png)
+    1. Our final step is to edit the redirect rules of our newly hosted app. You should be on the main app's main page. Choose 'Rewrites and redirects' from the left hand side menu.
+    ![Amplify rewrites](./images/amplify_rewrites.png)
+    1. There should be one pre-existing rule. Change the Source Address to the following string `</^[^.]+$|\.(?!(css|gif|ico|jpg|js|png|txt|svg|woff|ttf|map|json)$)([^.]+$)/>`
+    1. Change the 'Type' dropdown to 200 (Rewrite)
+    ![Amplify redirect](./images/amplify_redirect.png)
+    1. Hit save and return to the main app page in the Amplify console. 
+    1. Your project may still be deploying, once it finishes choose the cloudfront link to see you newly live hosted application!
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
