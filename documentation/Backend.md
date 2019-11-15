@@ -179,5 +179,5 @@ With the infrastructure deployed, let's test processing and streaming a video as
 1. In the 'Output Storage Bucket' you should see a .m3u8 manifest object under the /outputs prefix that matches the filename of the video uploaded. Select all objects and select 'make public.' DO NOT do this with a bucket or content that is private this is only for workshop demonstration and testing purposes.
 1. Click the checkbox in the S3 console next to the .m3u8 object to open the information panel. Copy the Object URL and paste it into safari, iOS, VLC, or by using a test player like the [JW Player Stream Tester](https://developer.jwplayer.com/tools/stream-tester/)
 
-Congratulations! You are hosting a Video-on-Demand platform on AWS! Now let's setup a website that we will use to upload more content and deliver it to viewers.[Click Here to move onwards to Admin View!](./Admin.md)
+Congratulations! You are hosting a Video-on-Demand platform on AWS! Now let's setup a website that we will use to upload more content and deliver it to viewers. [Click Here](./Admin.md) to move onwards to Admin View!
 
