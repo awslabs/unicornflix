@@ -166,7 +166,18 @@ Current Environment: <b>dev</b>
 </pre>
 Now it is time to actually create the resources by pushing the configuration to the cloud. 
 
-1. Run `amplify push` to create the backend video resource which is comprised of the services necessary to manage, process, and serve our videos. It will take a few minutes to stage and create the resources in your AWS environment. While that runs, let's take a brief look at what was just created:
+1. Run `amplify push` to create the backend video resource which is comprised of the services necessary to manage, process, and serve our videos. We'll need to answer a few questions to generate code for interacting with GraphQL from our application, which will be used later in our development.
+
+<pre>
+? Do you want to generate code for your newly created GraphQL API <b>Yes</b>
+? Choose the code generation language target <b>javascript</b>
+? Enter the file name pattern of graphql queries, mutations and subscriptions <b>src/graphql/**/*.js</b>
+? Do you want to generate/update all possible GraphQL operations - queries, mutations and subscriptions <b>Yes</b>
+? Enter maximum statement depth [increase from default if your schema is deeply nested] <b>2</b>
+</pre>
+
+
+It will take a few minutes to stage and create the resources in your AWS environment. While that runs, let's take a brief look at what was just created:
 
   ![architecture](../images/amplify_arch.png)
 
