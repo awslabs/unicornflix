@@ -169,6 +169,7 @@ Now it is time to actually create the resources by pushing the configuration to 
 1. Run `amplify push` to create the backend video resource which is comprised of the services necessary to manage, process, and serve our videos. We'll need to answer a few questions to generate code for interacting with GraphQL from our application, which will be used later in our development.
 
 <pre>
+unicornflix $ <b>amplify push</b>
 ? Do you want to generate code for your newly created GraphQL API <b>Yes</b>
 ? Choose the code generation language target <b>javascript</b>
 ? Enter the file name pattern of graphql queries, mutations and subscriptions <b>src/graphql/**/*.js</b>
