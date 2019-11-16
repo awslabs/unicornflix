@@ -1,0 +1,59 @@
+[
+    {
+        "groupName": "Admin",
+        "precedence": 1,
+        "customPolicies": [
+            {
+                "PolicyName": "unicornflixe89bf4d2-admin-group-policy",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:PutObject",
+                                "s3:DeleteObject"
+                            ],
+                            "Resource": "arn:aws:s3:::unicornflix-dryrun-i0lvwkvst/public/*"
+                        }
+                    ]
+                }
+            },
+            {
+                "PolicyName": "unicornflixe89bf4d2-admin-group-policy",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:PutObject",
+                                "s3:DeleteObject"
+                            ],
+                            "Resource": "arn:aws:s3:::unicornflix-dryrun-im4qagikz/public/*"
+                        }
+                    ]
+                }
+            },
+            {
+                "PolicyName": "unicornflixe89bf4d2-admin-group-policy",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:PutObject",
+                                "s3:DeleteObject"
+                            ],
+                            "Resource": "arn:aws:s3:::unicornflix-dryrun-iu1nze3ap/public/*"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]

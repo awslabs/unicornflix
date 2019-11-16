@@ -1,0 +1,19 @@
+{
+    "dryrun": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-unicornflix-dryrun-103336-authRole",
+            "UnauthRoleArn": "arn:aws:iam::585391604912:role/amplify-unicornflix-dryrun-103336-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::585391604912:role/amplify-unicornflix-dryrun-103336-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "amplify-unicornflix-dryrun-103336-deployment",
+            "UnauthRoleName": "amplify-unicornflix-dryrun-103336-unauthRole",
+            "StackName": "amplify-unicornflix-dryrun-103336",
+            "StackId": "arn:aws:cloudformation:us-west-2:585391604912:stack/amplify-unicornflix-dryrun-103336/6fc727a0-07d6-11ea-851d-06b6ad3a0d7e"
+        },
+        "categories": {
+            "auth": {
+                "unicornflixe89bf4d2": {}
+            }
+        }
+    }
+}
