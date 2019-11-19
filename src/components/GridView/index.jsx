@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import React, { Component } from 'react';
 import { Grid, Col, Row } from 'react-styled-flexboxgrid';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
@@ -6,6 +7,12 @@ import './index.css';
 import VideoPlayer from '../VideoPlayer';
 import GridCardView from '../GridCardView';
 import 'video.js/dist/video-js.css';
+// Insert Location 9
+
+// Insert Location 12
+
+// Insert Location 14
+
 
 class GridView extends Component {
   constructor(props) {
@@ -22,10 +29,10 @@ class GridView extends Component {
   }
 
   async componentDidMount() {
-    // <Location 1>
+    // Insert Location 10
 
-    // <Location 5>
-    
+    // Insert Location 16
+
   }
 
   hideMovie = () => {
@@ -35,7 +42,7 @@ class GridView extends Component {
   }
 
   displayMovie = (item) => {
-    // <Location 3>
+    // Insert Location 13
 
   }
 
@@ -60,13 +67,13 @@ class GridView extends Component {
   }
 
   listenForNewAssets = () => {
-    // <Location 4>
+    // Insert Location 15
 
   }
 
   async handleOnDocumentBottom() {
-    // <Location 2>
-    
+    // Insert Location 11
+
   }
 
   render() {

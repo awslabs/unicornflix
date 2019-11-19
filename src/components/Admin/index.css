@@ -1,27 +1,106 @@
-.App {
+.centerText {
   text-align: center;
+  font-size: 150%;
+  margin-top: -25%;
 }
+
+.app {
+  width: 100%;
+}
+
+input[type=text] {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.submitButton {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.submitLabel{
+  background-color: #54c922;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 15px;
+}
+
+.submitLabel:focus,
+.submitLabel:hover {
+  background-color: #179b3c;
+}
+
+.desTextA {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.adminHeader {
+  background-color: #edeff3;
+  min-height: 100vh;
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items:normal;
+  text-align: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  background: #E1E4EA;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #1F1C18, #8E0E00);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #FF9900, #ffc300); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.pageName {
+  position: absolute;
+  font-size: 200%;
+  text-align: center;
+  color: black;
+  margin: auto;
+  width: 50%;
+  top: 0;
+  left: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .pageName {
+    text-align: center;
+    padding: 10px 0;
+    font-size: 100%;
+    width: 20%;
+  }
+
+  .desTextA {
+    width: 100%;
+  }
+  input[type=text], select {
+    width: 100%;
+  }
+
+}
+
+@media only screen and (min-width: 1000px) {
+  .pageName {
+    width: 50%;
+    right:0;
+  }
+}
+
 
 .App-logo {
   height: 40vmin;
-}
-
-.App-header {
-  background-color: #edeff3;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-background: #E1E4EA;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to top, #1F1C18, #8E0E00);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to top, #FF9900, #ffc300); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-
-}
-
-.App-link {
-  color: #09d3ac;
 }

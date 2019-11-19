@@ -1,14 +1,20 @@
+/* eslint-disable import/order */
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import './index.css';
 import uuidv4 from 'uuid/v4';
 import FilePicker from '../FilePicker';
-// Place the imports for Admin/index.jsx here
+import PopoverProgress from '../PopoverProgress';
+// Insert Location 2
+
+// Insert Location 4
+
 
 class Admin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      titleVal: '', descVal: '', groups: [],
+      titleVal: '', descVal: '', groups: [], progress: 0,
     };
     this.submitFormHandler = this.submitFormHandler.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -16,12 +22,14 @@ class Admin extends React.Component {
   }
 
   componentDidMount() {
-    // Place the Auth currentSession and Storage configure for Admin/index.jsx here
+    // Insert Location 5
+
   }
 
   myCallback = (dataFromChild) => {
     this.setState({
       file: dataFromChild,
+      fileName: dataFromChild.name,
     });
   }
 
@@ -40,30 +48,37 @@ class Admin extends React.Component {
 
   submitFormHandler(event) {
     event.preventDefault();
-    // Place the form upload code for Admin/index.jsx here
+    // Insert Location 6
+
   }
 
   createAdminPanel() {
-    const { groups, titleVal, descVal } = this.state;
+    const {
+      groups,
+      titleVal,
+      descVal,
+      progress,
+    } = this.state;
     if (groups.includes('Admin')) {
       return (
         <div>
-          <h1>Admin Panel</h1>
-          <form onSubmit={this.submitFormHandler}>
-            <div>
-              Title:
-              {' '}
-              <input type="text" value={titleVal} name="titleVal" onChange={this.handleChange} />
-              <br />
-              Description:
-              {' '}
-              <br />
-              <textarea rows="4" cols="50" value={descVal} name="descVal" onChange={this.handleChange} />
-              <br />
-              <FilePicker callbackFromParent={this.myCallback} />
-              <input type="submit" value="Submit" />
-            </div>
-          </form>
+          <header>
+            <h1 className="pageName">Admin Panel</h1>
+            <form onSubmit={this.submitFormHandler}>
+              <div>
+                <input type="text" value={titleVal} name="titleVal" placeholder="Title" onChange={this.handleChange} />
+                <br />
+                <textarea className="desTextA" rows="4" cols="50" value={descVal} name="descVal" placeholder="Description" onChange={this.handleChange} />
+                <br />
+                <FilePicker callbackFromParent={this.myCallback} />
+                <label htmlFor="submitButton" className="submitLabel">
+                  Create Asset
+                  <input type="submit" className="submitButton" id="submitButton" value="Create Asset" />
+                </label>
+                <PopoverProgress progress={progress} />
+              </div>
+            </form>
+          </header>
         </div>
       );
     }
@@ -76,11 +91,11 @@ class Admin extends React.Component {
 
   render() {
     return (
-      <div className="App-header">
+      <div className="adminHeader">
         {this.createAdminPanel()}
       </div>
     );
   }
 }
+// Insert Location 3
 
-export default Admin;
