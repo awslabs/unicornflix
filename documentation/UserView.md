@@ -107,9 +107,9 @@ API.graphql(
 ).subscribe({
   next: (((data) => {
     const { items } = this.state;
-    const newItems = items.push(data.value.data.onCreateVodAsset);
+    items.push(data.value.data.onCreateVodAsset);
     this.setState({
-      items: newItems,
+      items,
     });
   })),
 });

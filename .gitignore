@@ -34,3 +34,5 @@ dist/
 node_modules/
 aws-exports.js
 awsconfiguration.json
+src/graphql/
+aws-video-exports.js
