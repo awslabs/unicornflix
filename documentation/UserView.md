@@ -61,7 +61,7 @@ You should now see any content that you've previously uploaded through the Admin
     ```javascript
     import awsvideo from '../../aws-video-exports';
     ```
-1. Now that we have our video info we can now hook up our source to our video file. Find `Location 3` inside `displayMove` and paste the code below. What the code does is it sets the state of our src of our video and tells the React code to show a module with our video player embded inside.
+1. Now that we have our video info we can now hook up our source to our video file. Find `Location 3` inside `displayMovie` and paste the code below. What the code does is it sets the state of our src of our video and tells the React code to show a module with our video player embded inside.
     ```javascript
     this.setState({
       sources: [{
