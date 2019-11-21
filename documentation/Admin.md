@@ -83,7 +83,7 @@ Now that we have an admin user, let's implement the asset upload logic that enab
     })
     ```
     </details>
-1. Find the submitFormHandler(event) function and add the following code to the function body. This is the form that contains basic metadata to be submitted alongside the asset upload. The API calls first create the asset tracker in the DynamoDB table. After the asset tracker is create then we will fire off the operation to create the VideoObject and the Storage operation to upload all the metadata and the video file.
+1. Find the submitFormHandler(event) function and add the following code to the function body. This is the form that contains basic metadata to be submitted alongside the asset upload. The API calls first create the asset tracker in the DynamoDB table. After the asset tracker is created, we will fire off the operation to create the VideoObject and the Storage operation to upload all the metadata and the video file.
 
     ```javascript
     const uuid = uuidv4();
