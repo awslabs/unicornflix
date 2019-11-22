@@ -10,7 +10,7 @@ This workshop provides a react application that will serve as the basis for your
 Let's start with adding connections to all of our AWS resources, so that we can start communiticating back and forth with our API and Auth components we added earlier.
 
 1. In an IDE open `unicornflix/src/index.js`
-1. Insert at the top of the file an import to bring in all the required resources for the API and Auth that we created. Inside the `aws-exports` file contains all the API and Auth definitions that are required for this workshop.
+1. Near the top of the file, at the bottom of the insert statements, add an import to bring in all the required resources for the API and Auth that we created. Inside the `aws-exports` file contains all the API and Auth definitions that are required for this workshop.
     ```javascript
     import awsconfig from './aws-exports';
     import Amplify from 'aws-amplify';
