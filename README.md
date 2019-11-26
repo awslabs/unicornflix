@@ -6,6 +6,8 @@ In this workshop we will build the video on demand streaming platform that allow
 
 The workshop is split into three primary sections with a collection of optional extensions:
 
+![3 steps to UnicornFlix](https://www.amplify-video.com/unicornflix/steps.png)
+
 **Backend Deployment with Amplify CLI** - Use the Amplify CLI to deploy the API, Authentication, and Video Streaming infrastructure.
 
 **Web Client Admin View** - Build a web application to add videos and associate basic metadata.

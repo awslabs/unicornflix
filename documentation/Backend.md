@@ -8,10 +8,10 @@
 
     1. Obtain your hash from the event lead and visit https://dashboard.eventengine.run/login
     1. Login in using your hash and click on the use console button
-    1. A popover will appear with your AWS console access fedaration link and AWS CLI profile links
+    1. A popover will appear with your AWS console access federation link and AWS CLI profile links
     1. Open up your AWS profile folder on your computer ( `~/.aws/` for Mac and Linux and `C:\Users\USERNAME \.aws\` for windows)
     1. If you don't have a AWS profile folder you need to create it and add in two files. One file called `credentials` and `config`.
-    1. Edit your `credentials` file by adding in a new profile like so (copying the values from the popover in event engine). Please note that the creditials file is all lowercase (in Event Engine it is uppercase).
+    1. Edit your `credentials` file by adding in a new profile like so (copying the values from the popover in event engine). Please note that the credentials file is all lowercase (in Event Engine it is uppercase).
         ```
         [ee]
         aws_access_key_id = XXXXXXXXXXXXXXXX
@@ -26,9 +26,9 @@
         ```
     1. When running `amplify init` choose the newly created profile called `ee` (**Note:** please don't select default)
     </details>
-1. Run `amplify init`. This command creates new AWS backend resources (in this case a single S3 bucket to host your Cloudformation templates) and pulls the AWS service configurations into the app!
+1. Run `amplify init`. This command creates new AWS backend resources (in this case a single S3 bucket to host your CloudFormation templates) and pulls the AWS service configurations into the app!
 1. Follow the prompts shown below.
-    * **PLEASE DOUBLE CHECK THE PROFILE YOU ARE USING. ONCE YOU CHOOSE ONE YOU CAN'T GO BACK UNLESS YOU DELETE EVERYTHING IN THE CLOUD**
+    * **PLEASE DOUBLE CHECK THE PROFILE YOU ARE USING.**
     * Note that because of the services leveraged, your AWS profile **MUST USE** us-west-2, us-east-1, eu-west-1, eu-central-1, ap-northeast-1, or ap-southeast-2.
  
     
@@ -79,7 +79,7 @@ If you want to only use API for CMS then choose the default ToDo and don't edit 
 ? Choose the default authorization type for the API <b>Amazon Cognito User Pool</b>
 </pre>
 
-Above we dive into create the basic infrastruture for our API. Amplify Video for Video on Demand only supports using GraphQL powered by AWS AppSync.
+Above we dive into create the basic infrastructure for our API. Amplify Video for Video on Demand only supports using GraphQL powered by AWS AppSync.
 
 <pre>
 ? Do you want to use the default authentication and security configuration? <b>Default configuration</b>
@@ -98,16 +98,16 @@ We take advantage of the built in Auth component for Amplify to add basic authen
 ? Do you want to edit the schema now? <b>No</b>
 </pre>
 
-Though we choose Todo and we don't edit the GraphQL schema here, we will be editing below with the correct values for our application.
+Though we choose ToDo and we don't edit the GraphQL schema here, we will be editing below with the correct values for our application.
 
 <pre>
 ? Do you want to edit your newly created model? <b>Yes</b>
 Please edit the file in your editor: <b>unicornflix/amplify/backend/api/unicornflix/schema.graphql</b>
 </pre>
 
-A new file should open up with your schema. We are going to edit the schema to remove the Todo that was added earlier by the default API generation.
+A new file should open up with your schema. We are going to edit the schema to remove the ToDo that was added earlier by the default API generation.
 
-The new schema should look like this if you removed just the Todo model:
+The new schema should look like this if you removed just the ToDo model:
 
 ```graphql
 type vodAsset @model (subscriptions: {level: public})

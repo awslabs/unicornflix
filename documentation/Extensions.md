@@ -63,4 +63,4 @@
     1. Change the 'Type' dropdown to 200 (Rewrite)
     ![Amplify redirect](https://www.amplify-video.com/unicornflix/amplify_redirect.png)
     1. Hit save and return to the main app page in the Amplify console. 
-    1. Your project may still be deploying, once it finishes choose the cloudfront link to see you newly live hosted application!
+    1. Your project may still be deploying, once it finishes choose the CloudFront link to see you newly live hosted application!
