@@ -2,7 +2,7 @@
 
  Again we need to include the authenticator component. For the user view the authentication ensures only signed-in users can access videos on UnicornFlix
 
-1. In an IDE, open `unicornflix/src/components/App/index.jsx`
+1. In an IDE, open `unicornflix/src/Components/App/index.jsx`
 1. At the bottom of the import block, add:
     ```javascript
     // Location 7
@@ -110,7 +110,7 @@ Now that our users can play back our content, let's add a real time content syst
 1. Find `Location 15` inside of `listenForNewAssets` function and add in a GraphQL subscriber. The purpose of this is to listen for newly posted videos! We are going back to using the [API](https://aws-amplify.github.io/docs/js/api#subscriptions). We will want to be subscribing to all the `onCreateVodAsset` mutations that happen! Some sample code is provided here:
     <details>
       <summary>Sample Code</summary>
-      
+
     ```javascript
     // Location 14
     API.graphql(
