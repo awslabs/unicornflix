@@ -50,7 +50,9 @@ Now we need an Admin user to test out the authentication functionality, let's cr
 1. Under General Settings, choose "Users and Groups"
 1. Select the blue "create user" button and enter the user creation form. You will need to enter a phone number that includes country code, for example +15558888
 1. Fill out the form to create a user. Now we will have to add admin privileges in order to enable this user to publish videos through the app.
-1. Select the user you just created
+1. Go back to the application and log in and create a new password.
+1. Navigate back Cognito in the console.
+1. Select the user you just created.
 1. Select the blue "Add to Group" button, and select the admin group.
 
 Now that we have an admin user, let's implement the asset upload logic that enables them to create new assets on the platform.
