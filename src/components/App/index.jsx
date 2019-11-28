@@ -15,4 +15,4 @@ function App() {
 }
 
 // Insert Location 8
-
+export default App;

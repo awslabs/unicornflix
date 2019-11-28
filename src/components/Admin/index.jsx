@@ -98,4 +98,4 @@ class Admin extends React.Component {
   }
 }
 // Insert Location 3
-
+export default Admin;
