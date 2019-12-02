@@ -145,7 +145,7 @@ Let's put our implementation of the admin page to the test by uploading an asset
 1. Navigate back to the application running on your Localhost.
 1. Log in to the admin user you created. Note: if you were previously logged in before creating your admin user, log out and log back in to refresh your tokens giving you access to post content.
 1. Navigate to the Admin Panel by going to the `/Admin` page in the browser
-1. Fill out the form and select a video with the file picker or use the sample video located [here](https://www.amplify-video.com/unicornflix/sample.mp4) (Right click and select `Save Link as...`)
+1. Fill out the form and select a video with the file picker or use the sample video located [here](https://www.amplify-video.com/unicornflix/sample2.mp4) (Right click and select `Save Link as...`)
 1. Once all the fields have been selected, choose the "submit" button to begin the upload process.
 
 Since we haven't implemented the user view yet, let's use the AWS console to explore what happened when we created the asset.
