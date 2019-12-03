@@ -102,17 +102,16 @@ Now that our users can play back our content, let's add a real time content syst
 1. Staying on the `unicornflix/src/Components/GridView/index.jsx`
 1. Add the following line of code to the bottom of the import block:
     ```javascript
-    // Location 13
+    // Location 14
     import { onCreateVodAsset } from '../../graphql/subscriptions';
 
     ```
 
-1. Find `Location 14` inside of `listenForNewAssets` function and add in a GraphQL subscriber. The purpose of this is to listen for newly posted videos! We are going back to using the [API](https://aws-amplify.github.io/docs/js/api#subscriptions). We will want to be subscribing to all the `onCreateVodAsset` mutations that happen! Some sample code is provided here:
+1. Find `Location 15` inside of `listenForNewAssets` function and add in a GraphQL subscriber. The purpose of this is to listen for newly posted videos! We are going back to using the [API](https://aws-amplify.github.io/docs/js/api#subscriptions). We will want to be subscribing to all the `onCreateVodAsset` mutations that happen! Some sample code is provided here:
     <details>
       <summary>Sample Code</summary>
 
     ```javascript
-    // Location 14
     API.graphql(
       graphqlOperation(onCreateVodAsset),
     ).subscribe({
@@ -128,7 +127,7 @@ Now that our users can play back our content, let's add a real time content syst
     ```
     </details>
 
-1. To kick off the subscription, we will need to call this function. To do so, paste in a call to function in `Location 5` inside of `componentDidMount`.
+1. To kick off the subscription, we will need to call this function. To do so, paste in a call to function in `Location 16` inside of `componentDidMount`.
     ```javascript
     // Location 15
     this.listenForNewAssets();
