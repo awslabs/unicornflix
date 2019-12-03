@@ -31,8 +31,17 @@
 1. Navigate to GitHub (or codecommit, gitlab, or bitbucket if you prefer!)
 1. Create a new repository in your personal github account called unicornflix.
 1. Return to the terminal window which is in the unicornflix/ directory of your project.
-1. Run the git command `git remote add amplify git@github.com:YOUR-GITHUB-USERNAME/unicorntrivia.git`
-1. Run `git push amplify amplify`
+1. Run the git command `rm -rf .git` and `rm .gitignore`
+1. Next run the comand `echo node_modules/ >> .gitignore`
+1. Finally, follow the standard process for adding a remote origin and pushing your code by running
+```
+git init
+git add *
+git commit -m “Initial Commit"
+git remote add origin <insert git remote url>
+git push -u origin master
+```
+
 1. If you navigate to your personal repo in the browser, all your application files should now be committed.
 1. Next, Navigate the the AWS Management Console. Search for the 'Amplify' Service in the search bar.
 1. Once you reach the Amplify service splash page, expand the left hand side corner by clicking the `≡` icon and select 'All Apps'.
@@ -65,3 +74,4 @@
     ![Amplify redirect](https://www.amplify-video.com/unicornflix/amplify_redirect.png)
 1. Hit save and return to the main app page in the Amplify console. 
 1. Your project may still be deploying, once it finishes choose the CloudFront link to see you newly live hosted application!
+1. Now, try uploading an asset from your phone and watch it appear in the application dashboard. (Remember to hold your phone in landscape, otherwise your video will appear sideways in the player)
