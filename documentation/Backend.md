@@ -66,7 +66,7 @@ unicornflix $ <b>amplify add video</b>
   in the project: <b>unicornflix</b>
 ? Select a system-provided encoding template, specify an already-created 
   template name:  <b>Default Encoding Template (Apple HLS @ 1080p30)</b>
-? Do you want Amplify to use your existing GraphQL API to manage your videos? <b>Yes</b>
+? Do you want Amplify to create a new GraphQL API to manage your videos? <b>Yes</b>
 </pre>
 
 Above we created the first part of amplify video to support transcoding of files. This workflow stands up two S3 buckets with a pre-processing Lambda function - to create new MediaConvert jobs for the files uploaded - and a post-processing Lambda function - to register the completed job and make the content available for playback. The MediaConvert job is configured to use the template you choose in the prompts above.
