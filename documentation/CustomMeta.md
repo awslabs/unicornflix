@@ -23,7 +23,7 @@
 1. Next we can add a new input field in the admin panel form for our HTML, so we can capture our new metadata field each time we upload a new asset. Navigate to `unicornflix/src/components/Admin/index.js` and add a new field to the form similar to how the title field HTML has been implemented. For more info on how forms work in HTML read these [docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form). One thing to note is that in React you need to implement a `onChange` functionality to store the value into the state so when we submit the form we can read the form data. These changes will happen in the `render` function
 1. Now that we have the value in the state from the form we can now add the value to our API calls. Find the `videoAsset` variable in the `submitFormHandler` function and add our new field to the GraphQL call.
 1. When you visit the website again you should be able to see the new field you have created and also add a value to it and send it over.
-1. This is a sample of what the implementation could look like for the entire file:
+1. This is a sample of what the implementation could look like for the entire `unicornflix/src/components/Admin/index.js` file:
     <details>
       <summary>Example:</summary>
 
