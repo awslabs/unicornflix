@@ -129,7 +129,7 @@ Now that our users can play back our content, let's add a real time content syst
 
 1. To kick off the subscription, we will need to call this function. To do so, paste in a call to function in `Location 16` inside of `componentDidMount`.
     ```javascript
-    // Location 15
+    // Location 16
     this.listenForNewAssets();
         
     ```
