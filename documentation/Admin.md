@@ -41,6 +41,7 @@ Now that our AWS resources have been configured, lets add the Admin functionalit
     ```
 
 1. Now when you visit `localhost:3000/Admin` or whatever hosting url + `/Admin` you will now see a new login page.
+  ![adminpanel](https://www.amplify-video.com/unicornflix/adminpanel.png)
 
 Now we need an Admin user to test out the authentication functionality, let's create an admin user through the Cognito console. 
 
