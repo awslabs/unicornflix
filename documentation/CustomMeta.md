@@ -1,4 +1,7 @@
 ## Custom Metadata field (keywords, cast, etc)
+
+To add custom metadata to your VOD solution this is the right walkthrough. We walk you through how to edit your API and guide you to how to update your Admin Panel to allow you to upload new assets.
+
 1. Navigate to `unicornflix/amplify/backend/api/unicornflix/schema.graphql`
 1. Make a change to the schema by adding a new custom field. For example you could add an `genre` field as shown below:
     

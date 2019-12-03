@@ -1,4 +1,7 @@
 ## Host your app with amplify console
+
+So you want to host using the Amplify console and publish with your phone these are the steps for you! To get started follow the steps below!
+
 1. To submit an application for hosting, the Amplify service requires your project to be commited to a git repository.
 1. Navigate to GitHub (or codecommit, gitlab, or bitbucket if you prefer!)
 1. Create a new repository in your personal github account called unicornflix.
