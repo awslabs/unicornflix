@@ -107,7 +107,7 @@ Now that our users can play back our content, let's add a real time content syst
 
     ```
 
-1. Find `Location 15` inside of `listenForNewAssets` function and add in a GraphQL subscriber. The purpose of this is to listen for newly posted videos! We are going back to using the [API](https://aws-amplify.github.io/docs/js/api#subscriptions). We will want to be subscribing to all the `onCreateVodAsset` mutations that happen! Some sample code is provided here:
+1. Find `Location 14` inside of `listenForNewAssets` function and add in a GraphQL subscriber. The purpose of this is to listen for newly posted videos! We are going back to using the [API](https://aws-amplify.github.io/docs/js/api#subscriptions). We will want to be subscribing to all the `onCreateVodAsset` mutations that happen! Some sample code is provided here:
     <details>
       <summary>Sample Code</summary>
 
