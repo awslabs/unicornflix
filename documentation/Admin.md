@@ -160,7 +160,8 @@ Since we haven't implemented the user view yet, let's use the AWS console to exp
 1. Select the VodAsset- table and choose "Items" to view the asset you just pushed to the cloud using the Application. Here you can see that the API gave each asset a GUID as well as createdAt/updatedAt fields.
 1. In the management console, select the services drop down from the top left corner of the browser screen.
 1. In the search bar type MediaConvert and navigate to the Elemental MediaConvert service page.
-1. Expand the left hand side menu and choose "Jobs"
+1. Click on the `≡` button to expand the left hand side menu and choose "Jobs"
+    ![mediaconvert_console](https://www.amplify-video.com/unicornflix/mediaconvert_console.png)
 1. You should see a job that was kicked off when you uploaded an asset through the console. You can view the input file name to be sure that the upload from the application was successful.
 1. (Optional) Select the job and select the "View JSON" button in the top right of the screen. Here you can view the job file which was submitted to the Elemental MediaConvert Service. Here, you can view the input and output locations as well as presets used during the transcoding process.
 
