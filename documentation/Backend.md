@@ -192,7 +192,6 @@ With the infrastructure deployed, let's test processing and streaming a video as
 
 1. Open the S3 console and upload a small video file to the 'Input Storage Bucket' which was returned when you ran amplify push. You can download and upload [this sample clip](https://www.amplify-video.com/unicornflix/sample2.mp4) or [this other sample clip](https://www.amplify-video.com/unicornflix/sample.mp4) if you don't have your own video handy. **Tip:** Right click on the link and select `Save as...` to grab the clip.
 1. Check the MediaConvert console, you should see an asset in 'progressing' shortly after the upload to S3 completes. Once the MediaConvert job is finished, continue on to the next step.
-1. In the 'Output Storage Bucket' you should see a .m3u8 manifest object under the /outputs prefix that matches the filename of the video uploaded. Select all objects and select 'make public.' DO NOT do this with a bucket or content that is private this is only for workshop demonstration and testing purposes.
 1. Click the checkbox in the S3 console next to the .m3u8 object to open the information panel. Copy the Object URL and paste it into safari, iOS, VLC, or by using a test player like the [Amplify Video Stream Tester](https://www.amplify-video.com/Player)
 
 Congratulations, you are now hosting a Video-on-Demand platform on AWS! Now let's setup a website that we will use to upload more content and deliver it to viewers. [Click Here](./Admin.md) to move onwards to Admin View.
