@@ -8,6 +8,7 @@ const Routing = (
     <div>
       <Route exact path="/" component={App} />
       <Route path="/Admin" component={Admin} />
+      <Route path="/App" component={App} />
     </div>
   </Router>
 );
