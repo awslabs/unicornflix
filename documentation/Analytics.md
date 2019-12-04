@@ -42,3 +42,5 @@ This walkthrough shows you how to add Analytics to your app so you can start tra
 1. Navigate back to the Pinpoint console, select your project, and on the left side select `Events` from the side view. Select the event that we have created (if you only have one event it will be default).
 1. Now you see all the events with that name. If you want to filter by the id of the video you can insert a filter for the `id` attribute and now you can see just the clicks for a single video.
 1. If you are feeling brave you can take a look at modifying `unicornflix/src/Components/VideoPlayer/index.jsx` to send video metrics back. We are using [video.js](https://docs.videojs.com/) as our video player so you can send metrics back.
+
+Click [here](./Extensions.md) to return to the extensions index and explore other features to implement.
