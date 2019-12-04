@@ -216,3 +216,5 @@ To add custom metadata to your VOD solution this is the right walkthrough. We wa
       }
       ```
     </details>
+    
+Click [here](./Extensions.md) to return to the extensions index and explore other features to implement.
