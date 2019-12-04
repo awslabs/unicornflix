@@ -50,3 +50,5 @@ git push -u origin master
 1. Hit save and return to the main app page in the Amplify console. 
 1. Your project may still be deploying, once it finishes choose the CloudFront link to see you newly live hosted application!
 1. Now, try uploading an asset from your phone and watch it appear in the application dashboard. (Remember to hold your phone in landscape, otherwise your video will appear sideways in the player)
+
+Click [here](./Extensions.md) to return to the extensions index and explore other features to implement.
