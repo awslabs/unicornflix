@@ -60,7 +60,7 @@
 1. Now, add the amplify video module to the project using `amplify video add`
 1. Follow the prompts as shown below. We'll be building in a basic content management system (CMS) as part of our video-on-demand (VOD) platform.
 <pre>
-unicornflix $ <b>amplify add video</b>
+unicornflix $ <b>amplify video add</b>
 ? Please select from one of the below mentioned services: <b>Video On Demand (alpha)</b>
 ? Provide a friendly name for your resource to be used as a label for this category 
   in the project: <b>unicornflix</b>
