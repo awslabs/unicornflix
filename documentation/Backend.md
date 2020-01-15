@@ -105,9 +105,9 @@ Though we choose ToDo and we don't edit the GraphQL schema here, we will be edit
 Please edit the file in your editor: <b>unicornflix/amplify/backend/api/unicornflix/schema.graphql</b>
 </pre>
 
-A new file should open up with your schema. We are going to edit the schema to remove the ToDo that was added earlier by the default API generation.
+A new file should open up with your schema. We are going to edit the schema to remove the Todo model that was added earlier by the default API generation.
 
-The new schema should look like this if you removed just the ToDo model:
+The new schema should look like this if you removed just the Todo model:
 
 ```graphql
 type vodAsset @model (subscriptions: {level: public})
