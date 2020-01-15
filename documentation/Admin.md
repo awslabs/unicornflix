@@ -49,7 +49,7 @@ Now we need an Admin user to test out the authentication functionality, let's cr
   ![cognito_main](https://www.amplify-video.com/unicornflix/cognito_main.png)
 1. Select the blue "Manage User Pools" button
   ![cognito_splash](https://www.amplify-video.com/unicornflix/cognito_splash.png)
-1. Select the userpool labeled "Unicornflix"
+1. Select the userpool labeled "Unicornflix" or your project name + a random string.
 1. Under General Settings, choose "Users and Groups"
   ![cognito_users](https://www.amplify-video.com/unicornflix/cognito_users.png)
 1. Select the blue "create user" button and enter the user creation form. You will need to enter a phone number that includes country code, for example +15558888888
@@ -75,7 +75,7 @@ Now that we have an admin user, let's implement the asset upload logic that enab
 
     ```
 
-1. Now that our backend is configured with our frontend we will now need to provide some context to the Storage component and get the current users status from the Auth module. In the `componentDidMount` function paste the following code into the function body. You must provide the unicornflix workshop region into the object below.
+1. Now that our backend is configured with our frontend we will now need to provide some context to the Storage component and get the current users status from the Auth module. In the `componentDidMount` function paste the following code into the function body.
 
     ```javascript
     // Location 5
@@ -151,7 +151,7 @@ Let's put our implementation of the admin page to the test by uploading an asset
 1. Log in to the admin user you created. Note: if you were previously logged in before creating your admin user, log out and log back in to refresh your tokens giving you access to post content.
 1. Navigate to the Admin Panel by going to the `/Admin` page in the browser
 1. Fill out the form and select a video with the file picker or use the sample video located [here](https://www.amplify-video.com/unicornflix/sample2.mp4) (Right click and select `Save Link as...`)
-1. Once all the fields have been selected, choose the "submit" button to begin the upload process.
+1. Once all the fields have been selected, choose the "Create Asset" button to begin the upload process.
 
 Since we haven't implemented the user view yet, let's use the AWS console to explore what happened when we created the asset.
 
