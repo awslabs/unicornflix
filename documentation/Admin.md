@@ -9,7 +9,7 @@ This workshop provides a react application that will serve as the basis for your
 
 Let's start with adding connections to all of our AWS resources, so that we can start communicating back and forth with our API and Auth components we added earlier.
 
-1. In an IDE open `unicornflix/src/index.js`
+1. In an IDE open `unicornflix/src/index.js`. This is the root of our react application.
 1. Insert at the top of the file an import to bring in all the required resources for the API and Auth that we created. Inside the `aws-exports` file contains all the API and Auth definitions that are required for this workshop.
 
     ```javascript
@@ -23,7 +23,7 @@ Let's start with adding connections to all of our AWS resources, so that we can 
 
 Now that our AWS resources have been configured, lets add the Admin functionality as this will allow us to create new content. To do so, we will first drop in the authenticator component and configure it to wrap the Admin react component that renders the Admin page.
 
-1. In an IDE open `unicornflix/src/components/Admin/index.jsx`
+1. In an IDE open `unicornflix/src/components/Admin/index.jsx`. This is the react component that will render when we go to the admin page. More information on React can be found [here](https://reactjs.org/) on the official site
 1. At the bottom of the import block, add the following statement to bring in the Authenticator component:
 
     ```javascript
