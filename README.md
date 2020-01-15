@@ -26,5 +26,23 @@ You just started at UnicornFlix and they hooked you up with a brand new laptop -
 1. Download and install Node and Node Package Manager (NPM) if you don't already have it from [nodejs.org](https://nodejs.org/en/download/). Select **LTS** for the node version.
 1. Install/update AWS Amplify CLI using this command `npm install -g @aws-amplify/cli`
 1. Install Amplify Video, a custom AWS Amplify CLI plugin for creating our video resource, by running `npm install -g amplify-category-video`
+1. If you are using cloud9, please refer to the following steps to configure your cloud9 instance to use you're aws credentials.
+<details>
+        <summary>Click here for Cloud9 instructions</summary>
+
+1. Create the ~/.aws/config file on your cloud9 instance
+1. Copy the contents in the ~/.aws/credentials into the ~/.aws/config file; then you will have the default profile when you run amplify init.
+
+You can copy the below example if you want to use a different set of access keys.
+```
+[default]
+aws_access_key_id=<access key id>
+aws_secret_access_key=<secret access key>
+aws_session_token=<optional session token for temp credentials>
+region=<region, such as 'us-west-2'>
+```
+
+Then when you run amplify init, you will see the option to select the profiles in the ~/.aws/config file.  
+</details>
 
 [Click Here to begin implementing the back end!](./documentation/Backend.md)
