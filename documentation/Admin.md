@@ -5,7 +5,7 @@ This workshop provides a react application that will serve as the basis for your
 1. To install the dependencies necessary to run the website locally run `npm install` from the UnicornFlix directory. Notable packages include:
     - `aws-amplify` - A javascript library that provides a declarative interface across amplify categories, like auth, in order to make them easier to add them into your application
     - `aws-amplify-react` - A UI component library for React to use with the CLI resources
-1. Next, to run the website with a local development environment run `npm start` and navigate to the page running on localhost.
+1. Next, to run the website with a local development environment run `npm start` and navigate to the page running on localhost. You will see an empty page with an orange background. 
 
 Let's start with adding connections to all of our AWS resources, so that we can start communicating back and forth with our API and Auth components we added earlier.
 
