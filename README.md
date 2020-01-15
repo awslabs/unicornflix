@@ -31,7 +31,7 @@ You just started at UnicornFlix and they hooked you up with a brand new laptop -
         <summary>Click here for Cloud9 instructions</summary>
 
 1. Create the ~/.aws/config file on your cloud9 instance
-1. Copy the contents in the ~/.aws/credentials into the ~/.aws/config file; then you will have the default profile when you run amplify init.
+1. Copy the contents in the ~/.aws/credentials into the ~/.aws/config file; then when you run amplify init, you will see the option to select the profiles in the ~/.aws/config file. 
 
 You can copy the below example if you want to use a different set of access keys.
 ```
@@ -41,8 +41,7 @@ aws_secret_access_key=<secret access key>
 aws_session_token=<optional session token for temp credentials>
 region=<region, such as 'us-west-2'>
 ```
-
-Then when you run amplify init, you will see the option to select the profiles in the ~/.aws/config file.  
+ 
 </details>
 
 [Click Here to begin implementing the back end!](./documentation/Backend.md)
