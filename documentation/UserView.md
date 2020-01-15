@@ -2,8 +2,8 @@
 
  Again we need to include the authenticator component. For the user view the authentication ensures only signed-in users can access videos on UnicornFlix
 
-1. In an IDE, open `unicornflix/src/Components/App/index.jsx`
-1. At the bottom of the import block, add:
+1. In an IDE, open `unicornflix/src/Components/App/index.jsx` this is the react component that will render when a user hits the main page.
+1. At the bottom of the import block, bring in the authenticator by adding:
     ```javascript
     // Location 7
     import { withAuthenticator } from 'aws-amplify-react';
@@ -17,14 +17,14 @@
 
     ```
 
-Create a user account using the app sign-up page instead of the Cognito console.
+Create a user account using the app sign-up page instead of the Cognito console. You may have to sign out if you're still logged in as the admin user.
 
 1. Refresh the tab that the application is running in to see the login page. (react's local dev server may do this for you)
 1. Create a new user. This user will not be an admin and thus won't have rights to publish content to UnicornFlix. Make sure to provide a valid email to activate your account. The code may take a minute or two to arrive in your inbox.
 
 Now we need to render the videos on our site for our viewers. Let's start by submitting a query for existing content.
 
-1. Navigate to `unicornflix/src/Components/GridView/index.jsx`
+1. Navigate to `unicornflix/src/Components/GridView/index.jsx`. This component will dynamically render new tiles for each video that is uploaded to the application by an administrator.
 1. Like before we will need to import some libraries & files into our application at the top of the file. All them will be similar to what you did in the Admin panel.
     ```javascript
     // Location 9
@@ -96,22 +96,25 @@ You should now see any content that you've previously uploaded through the Admin
     });
         
     ```
+    
+Congratulations, you should now be stream a video uploaded by the admin user!
 
 Now that our users can play back our content, let's add a real time content system to our web view. To do so, we will setup a subscription so that new content uploaded will appear for users already viewing the application.
 
 1. Staying on the `unicornflix/src/Components/GridView/index.jsx`
-1. Add the following line of code to the bottom of the import block:
+1. Add the following line of code to the bottom of the import block to bring in the code generated automatically by Amplify:
     ```javascript
     // Location 14
     import { onCreateVodAsset } from '../../graphql/subscriptions';
 
     ```
 
-1. Find `Location 15` inside of `listenForNewAssets` function and add in a GraphQL subscriber. The purpose of this is to listen for newly posted videos! We are going back to using the [API](https://aws-amplify.github.io/docs/js/api#subscriptions). We will want to be subscribing to all the `onCreateVodAsset` mutations that happen! Some sample code is provided here:
+1. Find `Location 15` inside of `listenForNewAssets` function and add in a GraphQL subscriber. The purpose of this is to listen for newly posted videos. We are going back to using the [API](https://aws-amplify.github.io/docs/js/api#subscriptions). We will want to be subscribing to all the `onCreateVodAsset` mutations that happen as these signal new updates to our video content. Sample code is provided below, but feel free to try yourself.
     <details>
       <summary>Sample Code</summary>
 
     ```javascript
+    // Location 15
     API.graphql(
       graphqlOperation(onCreateVodAsset),
     ).subscribe({
@@ -134,7 +137,7 @@ Now that our users can play back our content, let's add a real time content syst
         
     ```
 
-1. Now that you have the app fully functional, try uploading another asset to the system through the admin panel and see the video appear in the site. If all goes well, you'll have a functional video-on-demand application. 
+1. Now that you have the app fully functional, try opening a different web browser or a private/incognito tab and logging into the admin user. With both browser windows up side-by-side upload a new  asset to the system through the admin panel and see the video appear in the user view of the site automatically via the subscription. You now have a functional video-on-demand application. 
 
 ## Choose Your Own Adventure
 
