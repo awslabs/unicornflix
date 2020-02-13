@@ -29,7 +29,10 @@ You just started at UnicornFlix and they hooked you up with a brand new laptop -
 1. If you are using cloud9, please refer to the following steps to configure your cloud9 instance to use you're aws credentials.
 <details>
         <summary>Click here for Cloud9 instructions</summary>
-
+1. To create and connect to a new Cloud9 instance, follow these links.
+  1. https://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment-main.html
+  1. https://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html
+1. Once you have opened the IDE, click into the terminal in the bottom center of the screen and proceed with setting up your development environment.
 1. Create the ~/.aws/config file on your cloud9 instance
 1. Copy the contents in the ~/.aws/credentials into the ~/.aws/config file; then when you run amplify init, you will see the option to select the profiles in the ~/.aws/config file. 
 
