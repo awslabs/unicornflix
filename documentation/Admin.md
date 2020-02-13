@@ -6,7 +6,7 @@ This workshop provides a react application that will serve as the basis for your
     - `aws-amplify` - A javascript library that provides a declarative interface across amplify categories, like auth, in order to make them easier to add them into your application
     - `aws-amplify-react` - A UI component library for React to use with the CLI resources
 1. Next, to run the website with a local development environment run `npm start` and navigate to the page running on localhost. You will see an empty page with an orange background. 
-
+    1. If you are running this workshop on Cloud9, a window will appear in cloud9 with a URL, copy this URL and paste it into a new browser tab and remove the https and replace with http.
 Let's start with adding connections to all of our AWS resources, so that we can start communicating back and forth with our API and Auth components we added earlier.
 
 1. In an IDE open `unicornflix/src/index.js`. This is the root of our react application.
