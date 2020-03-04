@@ -20,32 +20,18 @@ The workshop is split into three primary sections with a collection of optional 
 
 ## Setting up Development Environment
 
-You just started at UnicornFlix and they hooked you up with a brand new laptop - _sweeeet!_ Now let's configure your development environment. 
+You just started at UnicornFlix and they hooked you up with a brand new laptop - _sweeeet!_ Now let's configure your development environment. For this workshop we will be using AWS Cloud9 a cloud native IDE!
 
-1. Clone the UnicornFlix workshop by running `git clone https://github.com/awslabs/UnicornFlix.git` or by downloading the zip [here](https://github.com/awslabs/unicornflix/archive/master.zip)
-1. Download and install Node and Node Package Manager (NPM) if you don't already have it from [nodejs.org](https://nodejs.org/en/download/). Select **LTS** for the node version.
-1. Install/update AWS Amplify CLI using this command `npm install -g @aws-amplify/cli`
+1. Click the below links and follow the instructions to create and open your cloud9 environment!(We will be using all the default configurations for this workshop)
+    * [Creating a Cloud9 Instance](https://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment-main.html)
+    * [Opening your Cloud9 Instance to the IDE](https://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html)
+1. Once your Cloud9 instance spins up and you have logged into your IDE, click on the terminal in the bottom center of the screen to begin developing.
+1. The first step is to copy your aws  credentials from the credentials file into a file called config. Run the following command in the terminal.
+    * `cp ~/.aws/credentials ~/.aws/config`
+1. Next, clone the UnicornFlix workshop by running `git clone https://github.com/awslabs/UnicornFlix.git`
+1. We will now be installing the development tools using the Node Package Manager(NPM)
+1. Install the AWS Amplify CLI using this command `npm install -g @aws-amplify/cli`
 1. Install Amplify Video, a custom AWS Amplify CLI plugin for creating our video resource, by running `npm install -g amplify-category-video`
-1. If you are using cloud9, please refer to the following steps to configure your cloud9 instance to use you're aws credentials.
-  <details>
-        <summary>Click here for Cloud9 instructions</summary>
-  
-  1. To create and connect to a new Cloud9 instance, follow these links.
-      1. https://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment-main.html
-      1. https://docs.aws.amazon.com/cloud9/latest/user-guide/open-environment.html
-  1. Once you have opened the IDE, click into the terminal in the bottom center of the screen and proceed with setting up your development environment.
-  1. Create the ~/.aws/config file on your cloud9 instance
-  1. Copy the contents in the ~/.aws/credentials into the ~/.aws/config file; then when you run amplify init, you will see the option to select the profiles in the ~/.aws/config file. 
 
-  You can copy the below example if you want to use a different set of access keys.
-  ```
-  [default]
-  aws_access_key_id=<access key id>
-  aws_secret_access_key=<secret access key>
-  aws_session_token=<optional session token for temp credentials>
-  region=<region, such as 'us-west-2'>
-  ```
- 
-  </details>
 
 [Click Here to begin implementing the back end!](./documentation/Backend.md)
