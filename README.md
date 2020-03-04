@@ -28,10 +28,13 @@ You just started at UnicornFlix and they hooked you up with a brand new laptop -
 1. Once your Cloud9 instance spins up and you have logged into your IDE, click on the terminal in the bottom center of the screen to begin developing.
 1. The first step is to copy your aws  credentials from the credentials file into a file called config. Run the following command in the terminal.
     * `cp ~/.aws/credentials ~/.aws/config`
-1. Next, clone the UnicornFlix workshop by running `git clone https://github.com/awslabs/UnicornFlix.git`
+1. Next, clone the UnicornFlix workshop. 
+    * `git clone https://github.com/awslabs/UnicornFlix.git`
 1. We will now be installing the development tools using the Node Package Manager(NPM)
-1. Install the AWS Amplify CLI using this command `npm install -g @aws-amplify/cli`
-1. Install Amplify Video, a custom AWS Amplify CLI plugin for creating our video resource, by running `npm install -g amplify-category-video`
+1. Install the AWS Amplify CLI using this command.
+    * `npm install -g @aws-amplify/cli`
+1. Finally, install Amplify Video, a custom AWS Amplify CLI plugin for creating our video resource, by running this command. 
+    * `npm install -g amplify-category-video`
 
 
 [Click Here to begin implementing the back end!](./documentation/Backend.md)
