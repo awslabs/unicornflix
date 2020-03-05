@@ -13,7 +13,7 @@
     Note: It is recommended to run this command from the root of your app directory
     ? Enter a name for the project: <b>unicornflix</b>
     ? Enter a name for the environment <b>dev</b>
-    ? Choose your default editor: <b>Visual Studio Code</b>
+    ? Choose your default editor: <b>None</b>
     ? Choose the type of app that you're building <b>javascript</b>
     Please tell us about your project
     ? What javascript framework are you using <b>react</b>
