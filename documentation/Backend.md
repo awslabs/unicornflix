@@ -1,8 +1,9 @@
 ## Backend Deployment with Amplify CLI
 
-1. First, open a terminal and navigate to the UnicornFlix directory that was created when you cloned the repository or unzipped it.
-**Please make sure the left hand side says UnicornFlix.** If it does not please move into the directory with `cd UnicornFlix`
-1. Run `amplify init`. This command creates new AWS backend resources (in this case a single S3 bucket to host your CloudFormation templates) and pulls the AWS service configurations into the app!
+1. First, we need to change directories to the root folder of our project.
+    * `cd UnicornFlix`
+1. Run amplify init. This command creates new AWS backend resources (in this case a single S3 bucket to host your CloudFormation templates) and pulls the AWS service configurations into the app!
+    * `amplify init`
 1. Follow the prompts shown below.
     * **PLEASE DOUBLE CHECK THE PROFILE YOU ARE USING.**
     * Note that because of the services leveraged, your AWS profile **MUST USE** us-west-2, us-east-1, eu-west-1, eu-central-1, ap-northeast-1, or ap-southeast-2.
@@ -30,7 +31,8 @@
     </pre>
     
     
-1. Now, add the amplify video module to the project using `amplify video add`
+1. Now, add the amplify video module to the project. 
+    * `amplify video add`
 1. Follow the prompts as shown below. We'll be building in a basic content management system (CMS) as part of our video-on-demand (VOD) platform.
 <pre>
 unicornflix <b>$amplify add video</b>
@@ -78,7 +80,7 @@ Though we choose ToDo and we don't edit the GraphQL schema here, we will be edit
 Please edit the file in your editor: <b>unicornflix/amplify/backend/api/unicornflix/schema.graphql</b>
 </pre>
 
-A new file should open up with your schema. We are going to edit the schema to remove the Todo model that was added earlier by the default API generation.
+Navigate to the file schema.graphql located at unicornflix/amplify/backend/api/unicornflix/schema.graphql using the Cloud9 file explorer on the left hand side panel, and double click schema.graphql file to open it. We are going to edit the schema to remove the Todo model that was added earlier by the default API generation. **Do not click enter until the schema has been modified and the file has been saved**
 
 The new schema should look like this if you removed just the Todo model:
 
@@ -122,9 +124,10 @@ place .graphql files in a directory at unicornflix/amplify/backend/api/unicornfl
 
 </pre>
 
-1. Once the prompts complete, make sure the module was added by checking `amplify status`
+1. Once the prompts complete, make sure the module was added by checking the project status.
+    * `amplify status`
 <pre>
-unicornflix $ <b>amplify status</b>
+unicornflix $ <b>`amplify status`</b>
 
 Current Environment: <b>dev</b>
 
@@ -138,7 +141,8 @@ Current Environment: <b>dev</b>
 </pre>
 Now it is time to actually create the resources by pushing the configuration to the cloud. 
 
-1. Run `amplify push` to create the backend video resource which is comprised of the services necessary to manage, process, and serve our videos. We'll need to answer a few questions to generate code for interacting with GraphQL from our application, which will be used later in our development.
+1. Run amplify push to create the backend video resource which is comprised of the services necessary to manage, process, and serve our videos. We'll need to answer a few questions to generate code for interacting with GraphQL from our application, which will be used later in our development.
+    * `amplify push`
 
 <pre>
 unicornflix $ <b>amplify push</b>
