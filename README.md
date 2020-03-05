@@ -46,7 +46,7 @@ You just started at UnicornFlix and they hooked you up with a brand new laptop -
 
 1. For **Instance type**, choose an instance type with the amount of RAM and vCPUs you think you need for the kinds of tasks you want to do. For this lab a **t2.micro** should be sufficient\.
 
-**Warning**  Choosing instance types with more RAM and vCPUs might result in additional charges to your AWS account for Amazon EC2\.
+    **Warning**  Choosing instance types with more RAM and vCPUs might result in additional charges to your AWS account for Amazon EC2\.
 
 1. For **Platform**, choose the type of Amazon EC2 instance that you want: We will be using **Amazon Linux**\. AWS Cloud9 creates the instance and then connects the environment to it\.
 
@@ -60,12 +60,10 @@ If you update these tags after you create them, the changes are NOT automaticall
 1. Choose **Next step**\.
 
 1. On the **Review** page, choose **Create environment**\. Wait while AWS Cloud9 creates your environment\. This can take several minutes\.
-**Note**  
-If account creation fails, a banner is displayed at the top of the console page\. Additionally, the card for the environment, if it exists, indicates that environment creation failed\.
+    
+    **Note**  If account creation fails, a banner is displayed at the top of the console page\. Additionally, the card for the environment, if it exists, indicates that environment creation failed\. After AWS Cloud9 creates your environment, it displays the AWS Cloud9 IDE for the environment\.
 
-After AWS Cloud9 creates your environment, it displays the AWS Cloud9 IDE for the environment\.
-
-If AWS Cloud9 doesn't display the IDE after at least five minutes, there might be a problem with your web browser, your AWS access permissions, the instance, or the associated virtual private cloud \(VPC\)\. For possible fixes, see [Cannot Open an Environment](troubleshooting.md#troubleshooting-env-loading) in *Troubleshooting*\.
+    If AWS Cloud9 doesn't display the IDE after at least five minutes, there might be a problem with your web browser, your AWS access permissions, the instance, or the associated virtual private cloud \(VPC\)\. For possible fixes, see [Cannot Open an Environment](troubleshooting.md#troubleshooting-env-loading) in *Troubleshooting*\.
   
 1. Once your Cloud9 instance spins up and you have logged into your IDE, click on the terminal in the bottom center of the screen to begin developing.
 
