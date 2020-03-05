@@ -20,7 +20,7 @@ The workshop is split into three primary sections with a collection of optional 
 
 ## Setting up Development Environment
 
-You just started at UnicornFlix and they hooked you up with a brand new laptop - _sweeeet!_ Now let's configure your development environment. For this workshop we will be using AWS Cloud9 a cloud native IDE!
+You just started at UnicornFlix and they hooked you up with a brand new laptop - _sweeeet!_ Now let's configure your development environment. For this workshop we will be using AWS Cloud9 a cloud native IDE! If you would like to run this workshop in your local environment, [click here](./documentation/Local_Env.md) to navigate to an alternate set of instructions.
 
 1. Click the below links and follow the instructions to create and open your cloud9 environment!(We will be using all the default configurations for this workshop)
     * [Creating a Cloud9 Instance](https://docs.aws.amazon.com/cloud9/latest/user-guide/create-environment-main.html)
