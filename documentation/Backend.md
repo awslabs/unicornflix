@@ -2,7 +2,7 @@
 
 1. First, we need to change directories to the root folder of our project.
     * `cd UnicornFlix`
-1. Run amplify init. This command creates new AWS backend resources (in this case a single S3 bucket to host your CloudFormation templates) and pulls the AWS service configurations into the app!
+1. Next we are going to begin development of our Amplify project by using the initialization command.  This command creates new AWS backend resources (in this case a single S3 bucket to host your CloudFormation templates) and pulls the AWS service configurations into the app!
     * `amplify init`
 1. Follow the prompts shown below.
     * **PLEASE DOUBLE CHECK THE PROFILE YOU ARE USING.**
@@ -31,7 +31,7 @@
     </pre>
     
     
-1. Now, add the amplify video module to the project. 
+1. Now, we are gpomg to add the amplify video module to the project. 
     * `amplify video add`
 1. Follow the prompts as shown below. We'll be building in a basic content management system (CMS) as part of our video-on-demand (VOD) platform.
 <pre>
@@ -80,7 +80,7 @@ Though we choose ToDo and we don't edit the GraphQL schema here, we will be edit
 Please edit the file in your editor: <b>unicornflix/amplify/backend/api/unicornflix/schema.graphql</b>
 </pre>
 
-Navigate to the file schema.graphql located at unicornflix/amplify/backend/api/unicornflix/schema.graphql using the Cloud9 file explorer on the left hand side panel, and double click schema.graphql file to open it. We are going to edit the schema to remove the Todo model that was added earlier by the default API generation. **Do not click enter until the schema has been modified and the file has been saved**
+Navigate to the file schema.graphql located at unicornflix/amplify/backend/api/unicornflix/schema.graphql using the Cloud9 file explorer on the left hand side panel, and double click schema.graphql file to open it. We are going to edit the schema to remove the Todo model that was added earlier by the default API generation. **Do not click enter until in the terminal until the schema has been modified and the file has been saved**
 
 The new schema should look like this if you removed just the Todo model:
 
