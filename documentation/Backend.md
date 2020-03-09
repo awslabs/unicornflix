@@ -31,7 +31,7 @@
     </pre>
     
     
-1. Now, we are gpomg to add the amplify video module to the project. 
+1. Now, we are going to add the amplify video module to the project. 
     * `amplify video add`
 1. Follow the prompts as shown below. We'll be building in a basic content management system (CMS) as part of our video-on-demand (VOD) platform.
 <pre>
