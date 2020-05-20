@@ -1,0 +1,25 @@
+[
+    {
+        "groupName": "Admin",
+        "precedence": 1,
+        "customPolicies": [
+            {
+                "PolicyName": "oneclick64da68cd-admin-group-policy",
+                "PolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": [
+                        {
+                            "Sid": "VisualEditor0",
+                            "Effect": "Allow",
+                            "Action": [
+                                "s3:PutObject",
+                                "s3:DeleteObject"
+                            ],
+                            "Resource": "arn:aws:s3:::app-app-input-ke5n2z3p/public/*"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]
