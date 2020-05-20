@@ -6,14 +6,9 @@ import uuidv4 from 'uuid/v4';
 import FilePicker from '../FilePicker';
 import PopoverProgress from '../PopoverProgress';
 // Insert Location 2
-import { withAuthenticator } from 'aws-amplify-react';
 
 // Insert Location 4
-import Amplify, {
-  Auth, API, graphqlOperation, Storage,
-} from 'aws-amplify';
-import awsvideoconfig from '../../aws-video-exports';
-import { createVodAsset, createVideoObject } from '../../graphql/mutations';
+
 
 class Admin extends React.Component {
   constructor(props) {
@@ -28,21 +23,7 @@ class Admin extends React.Component {
 
   componentDidMount() {
     // Insert Location 5
-    const region = Amplify._config.aws_project_region;
-    Auth.currentSession()
-      .then((data) => {
-        const groups = data.idToken.payload['cognito:groups'];
-        if (groups) {
-          this.setState({ groups: data.idToken.payload['cognito:groups'] });
-        }
-      });
-    
-    Storage.configure({
-      AWSS3: {
-        bucket: awsvideoconfig.awsInputVideo,
-        region,
-      },
-    });
+
   }
 
   myCallback = (dataFromChild) => {
@@ -68,42 +49,6 @@ class Admin extends React.Component {
   submitFormHandler(event) {
     event.preventDefault();
     // Insert Location 6
-    const uuid = uuidv4();
-const adminPanel = this;
-const videoObject = {
-  input: {
-    id: uuid,
-  },
-};
-
-API.graphql(graphqlOperation(createVideoObject, videoObject)).then((response, error) => {
-  if (error === undefined) {
-    const {
-      titleVal, descVal, file, fileName,
-    } = this.state;
-    const fileExtension = fileName.toLowerCase().split('.');
-    const videoAsset = {
-      input: {
-        title: titleVal,
-        description: descVal,
-        vodAssetVideoId: uuid,
-      },
-    };
-    API.graphql(graphqlOperation(createVodAsset, videoAsset));
-    Storage.put(`${uuid}.${fileExtension[fileExtension.length - 1]}`, file, {
-      progressCallback(progress) {
-        const { loaded, total } = progress;
-        console.log(`Uploaded: ${progress.loaded}/${progress.total}`);
-        adminPanel.setState({
-          progress: (loaded / total) * 100,
-        });
-      },
-      contentType: 'video/*',
-    })
-      .then(() => console.log(`Successfully Uploaded: ${uuid}`))
-      .catch((err) => console.log(`Error: ${err}`));
-  }
-});
 
   }
 
@@ -153,4 +98,4 @@ API.graphql(graphqlOperation(createVideoObject, videoObject)).then((response, er
   }
 }
 // Insert Location 3
-export default withAuthenticator(Admin, true);
+export default Admin;
