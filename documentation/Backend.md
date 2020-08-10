@@ -76,6 +76,8 @@ We take advantage of the built in Auth component for Amplify to add basic authen
 Though we choose ToDo and we don't edit the GraphQL schema here, we will be editing below with the correct values for our application.
 
 <pre>
+? Define your permission schema (Press <space> to select, <a> to toggle all, <i> to invert selection) <b>Admins can 
+only upload videos</b>
 ? Do you want to edit your newly created model? <b>Yes</b>
 Please edit the file in your editor: <b>unicornflix/amplify/backend/api/unicornflix/schema.graphql</b>
 </pre>
