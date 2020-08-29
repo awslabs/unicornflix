@@ -88,7 +88,7 @@ You should now see any content that you've previously uploaded through the Admin
     const region = Amplify._config.aws_project_region;
     this.setState({
       sources: [{
-          src: `https://${awsvideo.awsOutputVideo}/output/${item.video.id}.m3u8`,
+          src: `https://${awsvideo.awsOutputVideo}/public/${item.video.id}/${item.video.id}.m3u8`,
           type: 'application/x-mpegURL',
         }],
       displayingMovie: true,
