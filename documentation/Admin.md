@@ -92,6 +92,9 @@ Now that we have an admin user, let's implement the asset upload logic that enab
       AWSS3: {
         bucket: awsvideoconfig.awsInputVideo,
         region,
+        customPrefix: {
+          public: '',
+        }
       },
     });
         
