@@ -14,7 +14,7 @@
     "react-bottom-scroll-listener": "^3.0.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^4.0.1",
+    "react-scripts": "^4.0.3",
     "react-styled-flexboxgrid": "^3.1.0",
     "reactstrap": "^8.3.1",
     "styled-components": "^4.4.1",
