@@ -19,7 +19,7 @@
     "reactstrap": "^8.10.0",
     "styled-components": "^4.4.1",
     "uuid": "^8.3.2",
-    "video.js": "^7.16.0"
+    "video.js": "^7.14.3"
   },
   "scripts": {
     "start": "react-scripts start",
