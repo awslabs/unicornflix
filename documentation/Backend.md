@@ -158,7 +158,7 @@ unicornflix $ <b>amplify push</b>
 
 It will take a few minutes to stage and create the resources in your AWS environment. While that runs, let's take a brief look at what was just created:
 
-  ![architecture](https://www.amplify-video.com/unicornflix/amplify_arch.png)
+  ![architecture](https://amplifyvideo.wizages.com/unicornflix/amplify_arch.png)
 
 The video processing plane of Amplify Video VOD uses an S3 bucket for source material that generates S3 events on object PUT. A Lambda Function, triggered from the S3 event, schedules the MediaConvert job to process  content. The outputs of MediaConvert are put into the Output S3 bucket and also generate S3 events on object PUT. These events trigger a final Lambda function which sets access policies on the content served to users in the output bucket.
 
@@ -169,9 +169,9 @@ Authentication for the web application is governed through Cognito User Pools, w
 
 With the infrastructure deployed, let's test processing and streaming a video asset. 
 
-1. Open the S3 console and upload a small video file to the 'Input Storage Bucket' which was returned when you ran amplify push. You can download and upload [this sample clip](https://www.amplify-video.com/unicornflix/sample2.mp4) or [this other sample clip](https://www.amplify-video.com/unicornflix/sample.mp4) if you don't have your own video handy. **Tip:** Right click on the link and select `Save as...` to grab the clip.
+1. Open the S3 console and upload a small video file to the 'Input Storage Bucket' which was returned when you ran amplify push. You can download and upload [this sample clip](https://amplifyvideo.wizages.com/unicornflix/sample2.mp4) or [this other sample clip](https://amplifyvideo.wizages.com/unicornflix/sample.mp4) if you don't have your own video handy. **Tip:** Right click on the link and select `Save as...` to grab the clip.
 1. Check the MediaConvert console, you should see an asset in 'progressing' shortly after the upload to S3 completes. Once the MediaConvert job is finished, continue on to the next step.
-1. Click the checkbox in the S3 console next to the .m3u8 object to open the information panel. Copy the Object URL and paste it into safari, iOS, VLC, or by using a test player like the [Amplify Video Stream Tester](https://www.amplify-video.com/Player)
+1. Click the checkbox in the S3 console next to the .m3u8 object to open the information panel. Copy the Object URL and paste it into safari, iOS, VLC, or by using a test player like the [Amplify Video Stream Tester](https://amplifyvideo.wizages.com/Player)
 
 Congratulations, you are now hosting a Video-on-Demand platform on AWS! Now let's setup a website that we will use to upload more content and deliver it to viewers. [Click here to move onwards to Admin View.](./Admin.md)
 

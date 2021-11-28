@@ -41,25 +41,25 @@ Now that our AWS resources have been configured, lets add the Admin functionalit
     ```
 
 1. Visit `localhost:3000/Admin` or whatever hosting url + `/Admin` you will now see a new login page.
-  ![adminpanel](https://www.amplify-video.com/unicornflix/adminpanel.png)
+  ![adminpanel](https://amplifyvideo.wizages.com/unicornflix/adminpanel.png)
 
 Now we need an Admin user to test out the authentication functionality, let's create an admin user through the Cognito console. 
 
 1. Open the AWS Management Console and Search for Cognito.
-  ![cognito_main](https://www.amplify-video.com/unicornflix/cognito_main.png)
+  ![cognito_main](https://amplifyvideo.wizages.com/unicornflix/cognito_main.png)
 1. Select the blue "Manage User Pools" button
-  ![cognito_splash](https://www.amplify-video.com/unicornflix/cognito_splash.png)
+  ![cognito_splash](https://amplifyvideo.wizages.com/unicornflix/cognito_splash.png)
 1. Select the userpool labeled "Unicornflix" or your project name + a random string.
 1. Under General Settings, choose "Users and Groups"
-  ![cognito_users](https://www.amplify-video.com/unicornflix/cognito_users.png)
+  ![cognito_users](https://amplifyvideo.wizages.com/unicornflix/cognito_users.png)
 1. Select the blue "create user" button and enter the user creation form. You will need to enter a phone number that includes country code, for example +15558888888
 1. Fill out the form to create a user. Now we will have to add admin privileges in order to enable this user to publish videos through the app.
-  ![cognito_create_user](https://www.amplify-video.com/unicornflix/cognito_create_user.png)
+  ![cognito_create_user](https://amplifyvideo.wizages.com/unicornflix/cognito_create_user.png)
 1. Go back to the application and log in and create a new password.
 1. Navigate back Cognito in the console.
 1. Select the user you just created.
 1. Select the blue "Add to Group" button, and select the admin group.
-  ![cognito_add_group](https://www.amplify-video.com/unicornflix/cognito_add_group.png)
+  ![cognito_add_group](https://amplifyvideo.wizages.com/unicornflix/cognito_add_group.png)
 Now that we have an admin user, let's implement the asset upload logic that enables them to create new assets on the platform.(Note: You will need to log out of the application and log back in to make the admin privilages go into effect.)
 1. Don't be alarmed if you see a "Not Authenticated" message since we have yet to implement the view for the admin panel.
 1. In and IDE, Open `unicornflix/src/Components/Admin/index.jsx`
@@ -153,7 +153,7 @@ Let's put our implementation of the admin page to the test by uploading an asset
 1. Navigate back to the application running on your Localhost.
 1. Log in to the admin user you created. Note: if you were previously logged in before creating your admin user, log out and log back in to refresh your tokens giving you access to post content.
 1. Navigate to the Admin Panel by going to the `/Admin` page in the browser
-1. Fill out the form and select a video with the file picker or use the sample video located [here](https://www.amplify-video.com/unicornflix/sample2.mp4) (Right click and select `Save Link as...`)
+1. Fill out the form and select a video with the file picker or use the sample video located [here](https://amplifyvideo.wizages.com/unicornflix/sample2.mp4) (Right click and select `Save Link as...`)
 1. Once all the fields have been selected, choose the "Create Asset" button to begin the upload process.
 
 Since we haven't implemented the user view yet, let's use the AWS console to explore what happened when we created the asset.
@@ -165,7 +165,7 @@ Since we haven't implemented the user view yet, let's use the AWS console to exp
 1. In the management console, select the services drop down from the top left corner of the browser screen.
 1. In the search bar type MediaConvert and navigate to the Elemental MediaConvert service page.
 1. Click on the `≡` button to expand the left hand side menu and choose "Jobs"
-    ![mediaconvert_console](https://www.amplify-video.com/unicornflix/mediaconvert_console.png)
+    ![mediaconvert_console](https://amplifyvideo.wizages.com/unicornflix/mediaconvert_console.png)
 1. You should see a job that was kicked off when you uploaded an asset through the console. You can view the input file name to be sure that the upload from the application was successful.
 1. (Optional) Select the job and select the "View JSON" button in the top right of the screen. Here you can view the job file which was submitted to the Elemental MediaConvert Service. Here, you can view the input and output locations as well as presets used during the transcoding process.
 
