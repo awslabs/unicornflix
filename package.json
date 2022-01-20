@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "aws-amplify": "^4.3.1",
-    "aws-amplify-react": "^5.1.2",
+    "aws-amplify-react": "^4.1.22",
     "bootstrap": "^5.1.2",
     "fs-extra": "^10.0.0",
     "hover.css": "^2.3.2",
@@ -14,7 +14,7 @@
     "react-bottom-scroll-listener": "^5.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^5.3.0",
-    "react-scripts": "^4.0.0",
+    "react-scripts": "^5.0.0",
     "react-styled-flexboxgrid": "^3.1.0",
     "reactstrap": "^8.10.0",
     "styled-components": "^4.4.1",
