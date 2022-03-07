@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
 import './index.css';
-import uuidv4 from 'uuid/v4';
+import { v4 as uuidv4 } from 'uuid';
 import FilePicker from '../FilePicker';
 import PopoverProgress from '../PopoverProgress';
 // Insert Location 2

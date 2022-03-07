@@ -1,8 +1,8 @@
 /* eslint-disable import/order */
 import React, { Component } from 'react';
-import { Grid, Col, Row } from 'react-styled-flexboxgrid';
+import { Grid, Col, Row } from 'react-styled-flexboxgrid-v2';
 import { Modal, ModalBody, ModalHeader } from 'reactstrap';
-import BottomScrollListener from 'react-bottom-scroll-listener';
+import { BottomScrollListener } from 'react-bottom-scroll-listener';
 import './index.css';
 import VideoPlayer from '../VideoPlayer';
 import GridCardView from '../GridCardView';
