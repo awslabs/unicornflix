@@ -4,13 +4,13 @@ import './index.css';
 import logo from '../App/logo.svg';
 
 const GridCardView = (props) => {
-  const { item: { title, details } } = props;
+  const { item: { title, description } } = props;
   return (
     <div className="card">
       <div className="container">
         <img src={logo} alt="Movie" />
         {title}
-        <p>{details}</p>
+        <p>{description}</p>
       </div>
     </div>
   );
