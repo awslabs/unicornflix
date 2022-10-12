@@ -35,13 +35,21 @@
     * `amplify video add`
 1. Follow the prompts as shown below. We'll be building in a basic content management system (CMS) as part of our video-on-demand (VOD) platform.
 <pre>
-unicornflix <b>$amplify add video</b>
+unicornflix $ <b>amplify add video</b>
 ? Please select from one of the below mentioned services: <b>Video On Demand (beta)</b>
 ? Provide a friendly name for your resource to be used as a label for this category in the project: <b>unicornflix</b>
 ? Select a system-provided encoding template, specify an already-created template name:  <b>Default Encoding Template (Apple HLS
  @ 1080p30)</b>
 ? Is this a production enviroment? <b>No</b>
 ? Do you want Amplify to create a new GraphQL API to manage your videos? <b>Yes</b>
+</pre>
+
+<b>Note</b>: If for some reason you get the error message `The Amplify CLI can NOT find command: add video` (meaning that the amplify video plugin is not being found) try adding it manually by doing:
+
+<pre>
+uniconflix $ <b>amplify plugin add</b>
+? Enter the absolute path for the root of the plugin directory: <b>The path were the amplify-category-video
+node module was installed</b> (in Windows usually is at %PROGRAMFILES%\nodejs\node_modules\amplify-category-video and in Linux and Mac at /usr/local/lib/node_modules/amplify-category-video)
 </pre>
 
 Above we created the first part of amplify video to support transcoding of files. This workflow stands up two S3 buckets with a pre-processing Lambda function - to create new MediaConvert jobs for the files uploaded - and a post-processing Lambda function - to register the completed job and make the content available for playback. The MediaConvert job is configured to use the template you choose in the prompts above. If we had chosed <b>Yes</b> for the production environment question, Amplify video would spin up AWS CloudFront to host your content on a CDN.
