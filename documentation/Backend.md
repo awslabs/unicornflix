@@ -30,6 +30,7 @@
     ? Please choose the profile you want to use <b>default</b>
     </pre>
     
+    * if you get an error here, it might be due to the instance size. Changing it (temporarily) to `t2.medium` should solve the problem.
     
 1. Now, we are going to add the amplify video module to the project. 
     * `amplify video add`
@@ -43,6 +44,8 @@ unicornflix <b>$amplify add video</b>
 ? Is this a production enviroment? <b>No</b>
 ? Do you want Amplify to create a new GraphQL API to manage your videos? <b>Yes</b>
 </pre>
+
+* if you get an error saying Amplify CLI can NOT find command: add video, `amplify plugin add` command solved the problem. The location of the plugin was /home/ec2-user//.nvm/versions/node/v16.19.0/lib/node_modules/amplify-category-video for me.
 
 Above we created the first part of amplify video to support transcoding of files. This workflow stands up two S3 buckets with a pre-processing Lambda function - to create new MediaConvert jobs for the files uploaded - and a post-processing Lambda function - to register the completed job and make the content available for playback. The MediaConvert job is configured to use the template you choose in the prompts above. If we had chosed <b>Yes</b> for the production environment question, Amplify video would spin up AWS CloudFront to host your content on a CDN.
 
