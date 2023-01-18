@@ -29,7 +29,18 @@
     ? Do you want to use an AWS profile? <b>Yes</b>
     ? Please choose the profile you want to use <b>default</b>
     </pre>
-    
+
+Before adding video to Amplify, add auth using the command `amplify auth add`.
+
+<pre>
+? Do you want to use the default authentication and security configuration? <b>Default configuration</b>
+? How do you want users to be able to sign in? <b>Username</b>
+? Do you want to configure advanced settings? <b>No, I am done.</b>
+Successfully added auth resource
+</pre>
+
+We take advantage of the built in Auth component for Amplify to add basic authentication to our application. We will keep with the defaults as it supports what we need for our application.
+
     
 1. Now, we are going to add the amplify video module to the project. 
     * `amplify video add`
@@ -51,19 +62,9 @@ Video On Demand only supports GraphQL right now.
 If you want to only use API for CMS then choose the default ToDo and don't edit it until later.
 ? Please select from one of the below mentioned services: <b>GraphQL</b>
 ? Provide API name: <b>unicornflix</b>
-? Choose the default authorization type for the API <b>Amazon Cognito User Pool</b>
 </pre>
 
 Above we dive into create the basic infrastructure for our API. Amplify Video for Video on Demand only supports using GraphQL powered by AWS AppSync.
-
-<pre>
-? Do you want to use the default authentication and security configuration? <b>Default configuration</b>
-? How do you want users to be able to sign in? <b>Username</b>
-? Do you want to configure advanced settings? <b>No, I am done.</b>
-Successfully added auth resource
-</pre>
-
-We take advantage of the built in Auth component for Amplify to add basic authentication to our application. We will keep with the defaults as it supports what we need for our application.
 
 <pre>
 ? Do you want to configure advanced settings for the GraphQL API <b>No, I am done.</b>
@@ -100,7 +101,7 @@ type vodAsset @model (subscriptions: {level: public})
   description:String!
 
   #DO NOT EDIT
-  video:videoObject @connection
+  video:videoObject @hasMany
 } 
 
 #DO NOT EDIT
