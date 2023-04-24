@@ -81,7 +81,7 @@ You should now see any content that you've previously uploaded through the Admin
 
     ```
 
-1. Now that we have our video info we can now hook up our source to our video file. Find `Location 13` inside `displayMove` and paste the code below. What the code does is it sets the state of our src of our video and tells the React code to show a module with our video player embedded inside.
+1. Now that we have our video info we can now hook up our source to our video file. Find `Location 13` inside `displayMovie` and paste the code below. What the code does is it sets the state of our src of our video and tells the React code to show a module with our video player embedded inside.
     ```javascript
     // Location 13
     // eslint-disable-next-line no-underscore-dangle
