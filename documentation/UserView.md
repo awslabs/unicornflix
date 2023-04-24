@@ -97,7 +97,7 @@ You should now see any content that you've previously uploaded through the Admin
         
     ```
     
-Congratulations, you should now be stream a video uploaded by the admin user!
+Congratulations, you should now be able to stream a video uploaded by the admin user!
 
 Now that our users can play back our content, let's add a real time content system to our web view. To do so, we will setup a subscription so that new content uploaded will appear for users already viewing the application.
 
